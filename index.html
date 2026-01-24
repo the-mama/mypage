@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahesh — Data Engineer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --bg: #f6f8fb;
+      --bg-2: #eef2f7;
+      --ink: #0f172a;
+      --muted: #5b6473;
+      --accent: #1e3a8a;
+      --accent-2: #0ea5e9;
+      --accent-3: #6366f1;
+      --card: rgba(255, 255, 255, 0.9);
+      --shadow: rgba(15, 23, 42, 0.08);
+      --sans: "Manrope", "Avenir", sans-serif;
+      --display: "Space Grotesk", "Avenir", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(30, 58, 138, 0.08), transparent 45%),
+        radial-gradient(circle at 80% 15%, rgba(14, 165, 233, 0.08), transparent 45%),
+        radial-gradient(circle at 70% 75%, rgba(99, 102, 241, 0.08), transparent 50%),
+        linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px clamp(20px, 4vw, 56px) 64px;
+      display: grid;
+      gap: 36px;
+      position: relative;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 10px 0 8px;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      line-height: 1.05;
+    }
+
+    .headline {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-2);
+    }
+
+    .portrait {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)),
+        linear-gradient(130deg, rgba(30, 58, 138, 0.2), rgba(14, 165, 233, 0.4));
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.9rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 22px 24px;
+      box-shadow: 0 18px 36px var(--shadow);
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      margin: 0 0 12px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.06);
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .map {
+      position: relative;
+      min-height: 460px;
+      overflow: hidden;
+    }
+
+    .map::before {
+      content: "";
+      position: absolute;
+      inset: -40% 10% 10% -40%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.08), transparent 55%);
+      pointer-events: none;
+    }
+
+    .map-wrap {
+      position: relative;
+      min-height: 430px;
+    }
+
+    .map-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .map-hub {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, rgba(30, 58, 138, 0.12), rgba(14, 165, 233, 0.18));
+      font-weight: 600;
+      color: var(--accent);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      z-index: 2;
+    }
+
+    .map-node {
+      position: absolute;
+      padding: 10px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      transform: translate(-50%, -50%);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      z-index: 2;
+    }
+
+    .map-node span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .map-node:hover,
+    .map-node:focus-visible {
+      transform: translate(-50%, -55%);
+      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.18);
+    }
+
+    .info-panel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-panel h3 {
+      margin: 0;
+      font-family: var(--display);
+    }
+
+    .info-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .info-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .info-tags span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.08);
+      font-size: 0.82rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .footer-links button {
+      background: none;
+      border: none;
+      font: inherit;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+    }
+
+    .footer-links button::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      transition: width 200ms ease;
+    }
+
+    .footer-links button:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        justify-self: start;
+      }
+
+      .map-wrap {
+        min-height: 520px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <div class="eyebrow">Data Engineer Portfolio</div>
+        <h1>Mahesh Kumar</h1>
+        <p class="headline">
+          Data engineer focused on reliability, performance, and clear analytics. I build lakehouse platforms,
+          streaming pipelines, and governance layers that keep decision-making trustworthy.
+        </p>
+        <div class="hero-meta">
+          <span><span class="dot"></span> Bangalore, IN</span>
+          <span><span class="dot"></span> Open to consulting</span>
+          <span><span class="dot"></span> mahesh@email.com</span>
+        </div>
+      </div>
+      <div class="portrait" aria-label="Photo placeholder">PHOTO</div>
+    </header>
+
+    <section class="card">
+      <h2 class="section-title">Core Skills</h2>
+      <div class="skills">
+        <span class="pill">Data Modeling</span>
+        <span class="pill">ELT / ETL</span>
+        <span class="pill">Streaming</span>
+        <span class="pill">Lakehouse</span>
+        <span class="pill">dbt</span>
+        <span class="pill">Airflow</span>
+        <span class="pill">Spark</span>
+        <span class="pill">Observability</span>
+        <span class="pill">Data Quality</span>
+        <span class="pill">Cost Optimization</span>
+      </div>
+    </section>
+
+    <section class="card map">
+      <h2 class="section-title">Project Mind Map</h2>
+      <div class="map-wrap" id="map">
+        <svg class="map-svg" id="map-links" aria-hidden="true"></svg>
+        <div class="map-hub" id="map-hub">THE PROJECTS</div>
+
+        <a class="map-node" data-type="project" data-id="p1" href="https://example.com/project-1" target="_blank" rel="noreferrer" style="left: 16%; top: 26%;">
+          Real-time Billing
+          <span>Kafka · Flink</span>
+        </a>
+        <a class="map-node" data-type="project" data-id="p2" href="https://example.com/project-2" target="_blank" rel="noreferrer" style="left: 40%; top: 12%;">
+          Semantic Layer
+          <span>dbt · Metrics</span>
+        </a>
+        <a class="map-node" data-type="project" data-id="p3" href="https://example.com/project-3" target="_blank" rel="noreferrer" style="left: 70%; top: 20%;">
+          ML Feature Store
+          <span>Feast · BigQuery</span>
+        </a>
+        <a class="map-node" data-type="project" data-id="p4" href="https://example.com/project-4" target="_blank" rel="noreferrer" style="left: 82%; top: 48%;">
+          FinOps Pipeline
+          <span>Snowflake · Python</span>
+        </a>
+        <a class="map-node" data-type="project" data-id="p5" href="https://example.com/project-5" target="_blank" rel="noreferrer" style="left: 70%; top: 76%;">
+          Analytics Hub
+          <span>Superset · UX</span>
+        </a>
+        <a class="map-node" data-type="project" data-id="p6" href="https://example.com/project-6" target="_blank" rel="noreferrer" style="left: 44%; top: 84%;">
+          Data Governance
+          <span>Lineage · Policy</span>
+        </a>
+        <a class="map-node" data-type="project" data-id="p7" href="https://example.com/project-7" target="_blank" rel="noreferrer" style="left: 18%; top: 70%;">
+          SLA Monitor
+          <span>Alerts · SLIs</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="card info-panel" aria-live="polite">
+      <h3 id="info-title">Other information...</h3>
+      <p id="info-body">Hover on a project or a link below to preview details. Click a project to open its page.</p>
+      <div class="info-tags" id="info-tags"></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Navigate</h2>
+      <div class="footer-links">
+        <button type="button" data-type="page" data-id="home">Home</button>
+        <button type="button" data-type="page" data-id="blog">Blog</button>
+        <button type="button" data-type="page" data-id="contact">Contact</button>
+        <button type="button" data-type="page" data-id="follow">Follow me</button>
+        <button type="button" data-type="page" data-id="downloads">Downloads</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const infoTitle = document.getElementById("info-title");
+    const infoBody = document.getElementById("info-body");
+    const infoTags = document.getElementById("info-tags");
+
+    const infoDetails = {
+      projects: {
+        p1: {
+          title: "Real-time Billing",
+          body: "Built a low-latency billing stream with end-to-end guarantees and drift detection.",
+          tags: ["Kafka", "Flink", "SLOs"]
+        },
+        p2: {
+          title: "Semantic Layer",
+          body: "Unified business metrics with versioned definitions and self-serve exploration.",
+          tags: ["dbt", "Metrics", "Governance"]
+        },
+        p3: {
+          title: "ML Feature Store",
+          body: "Productionized feature pipelines with offline/online parity and monitoring.",
+          tags: ["Feast", "BigQuery", "ML"]
+        },
+        p4: {
+          title: "FinOps Pipeline",
+          body: "Automated cost attribution and anomaly alerts across multiple clouds.",
+          tags: ["Snowflake", "Python", "FinOps"]
+        },
+        p5: {
+          title: "Analytics Hub",
+          body: "Executive dashboards with narrative insights and drill-downs.",
+          tags: ["Superset", "UX", "KPIs"]
+        },
+        p6: {
+          title: "Data Governance",
+          body: "Policy-driven lineage, classification, and retention.",
+          tags: ["Lineage", "Security", "Compliance"]
+        },
+        p7: {
+          title: "SLA Monitor",
+          body: "Operational monitoring for pipelines with incident workflows.",
+          tags: ["Alerting", "SLIs", "Ops"]
+        }
+      },
+      pages: {
+        home: {
+          title: "Home",
+          body: "Project highlights, latest wins, and key metrics.",
+          tags: ["Overview", "Highlights"]
+        },
+        blog: {
+          title: "Blog",
+          body: "Deep dives on data modeling, governance, and reliability engineering.",
+          tags: ["Writing", "Insights"]
+        },
+        contact: {
+          title: "Contact",
+          body: "Let’s discuss your data platform roadmap.",
+          tags: ["Email", "Availability"]
+        },
+        follow: {
+          title: "Follow me",
+          body: "LinkedIn, GitHub, and speaking engagements.",
+          tags: ["Social", "Talks"]
+        },
+        downloads: {
+          title: "Downloads",
+          body: "Resume, project one-pagers, and architecture templates.",
+          tags: ["Resume", "Templates"]
+        }
+      }
+    };
+
+    const clearTags = () => {
+      infoTags.innerHTML = "";
+    };
+
+    const renderInfo = (entry) => {
+      infoTitle.textContent = entry.title;
+      infoBody.textContent = entry.body;
+      clearTags();
+      entry.tags.forEach((tag) => {
+        const chip = document.createElement("span");
+        chip.textContent = tag;
+        infoTags.appendChild(chip);
+      });
+    };
+
+    const attachHandlers = () => {
+      document.querySelectorAll("[data-type]").forEach((el) => {
+        const type = el.getAttribute("data-type");
+        const id = el.getAttribute("data-id");
+        const entry = type === "project" ? infoDetails.projects[id] : infoDetails.pages[id];
+        if (!entry) return;
+
+        el.addEventListener("mouseenter", () => renderInfo(entry));
+        el.addEventListener("focus", () => renderInfo(entry));
+        el.addEventListener("click", () => renderInfo(entry));
+      });
+    };
+
+    const drawLinks = () => {
+      const map = document.getElementById("map");
+      const hub = document.getElementById("map-hub");
+      const svg = document.getElementById("map-links");
+      const nodes = map.querySelectorAll(".map-node");
+
+      const mapRect = map.getBoundingClientRect();
+      const hubRect = hub.getBoundingClientRect();
+      const hubCenter = {
+        x: hubRect.left - mapRect.left + hubRect.width / 2,
+        y: hubRect.top - mapRect.top + hubRect.height / 2
+      };
+
+      svg.setAttribute("viewBox", `0 0 ${mapRect.width} ${mapRect.height}`);
+      svg.innerHTML = "";
+
+      nodes.forEach((node) => {
+        const nodeRect = node.getBoundingClientRect();
+        const nodeCenter = {
+          x: nodeRect.left - mapRect.left + nodeRect.width / 2,
+          y: nodeRect.top - mapRect.top + nodeRect.height / 2
+        };
+
+        const mid = {
+          x: (hubCenter.x + nodeCenter.x) / 2,
+          y: (hubCenter.y + nodeCenter.y) / 2
+        };
+
+        const dx = nodeCenter.x - hubCenter.x;
+        const dy = nodeCenter.y - hubCenter.y;
+        const sway = Math.min(40, Math.max(18, Math.abs(dx) * 0.1));
+        const control = {
+          x: mid.x + (dy > 0 ? sway : -sway),
+          y: mid.y - (dx > 0 ? sway : -sway)
+        };
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", `M ${hubCenter.x} ${hubCenter.y} Q ${control.x} ${control.y} ${nodeCenter.x} ${nodeCenter.y}`);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", "rgba(15, 23, 42, 0.25)");
+        path.setAttribute("stroke-width", "2");
+        path.setAttribute("stroke-linecap", "round");
+        svg.appendChild(path);
+      });
+    };
+
+    const handleResize = () => {
+      window.requestAnimationFrame(drawLinks);
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("load", () => {
+      attachHandlers();
+      drawLinks();
+    });
+  </script>
+</body>
+</html>
