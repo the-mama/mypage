@@ -339,11 +339,26 @@
       }
 
       .map-wrap {
-        min-height: 560px;
+        min-height: auto;
+        display: grid;
+        gap: 14px;
       }
 
       .map-node {
+        position: static;
+        transform: none;
         font-size: 0.88rem;
+        width: 100%;
+      }
+
+      .map-hub {
+        position: static;
+        transform: none;
+        justify-self: start;
+      }
+
+      .map-svg {
+        display: none;
       }
     }
   </style>
