@@ -70,10 +70,10 @@
 
     .headline {
       margin: 0;
-      font-size: 1.05rem;
+      font-size: 1.12rem;
       line-height: 1.7;
       color: var(--muted);
-      max-width: 520px;
+      max-width: 100%;
     }
 
     .hero-meta {
@@ -99,14 +99,15 @@
     }
 
     .portrait {
-      width: 148px;
-      height: 148px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       padding: 4px;
       background:
         radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)),
         linear-gradient(130deg, rgba(30, 58, 138, 0.2), rgba(14, 165, 233, 0.4));
       box-shadow: 0 16px 28px rgba(15, 23, 42, 0.18);
+      align-self: center;
     }
 
     .portrait img {
@@ -251,7 +252,8 @@
       font-size: 0.95rem;
     }
 
-    .footer-links button {
+    .footer-links a {
+      text-decoration: none;
       background: none;
       border: none;
       font: inherit;
@@ -261,7 +263,7 @@
       position: relative;
     }
 
-    .footer-links button::after {
+    .footer-links a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -272,7 +274,7 @@
       transition: width 200ms ease;
     }
 
-    .footer-links button:hover::after {
+    .footer-links a:hover::after {
       width: 100%;
     }
 
@@ -383,13 +385,13 @@
     </section>
 
     <section class="card">
-      <h2 class="section-title">Navigate</h2>
+      <h2 class="section-title">Find More</h2>
       <div class="footer-links">
-        <button type="button" data-type="page" data-id="home">Home</button>
-        <button type="button" data-type="page" data-id="blog">Blog</button>
-        <button type="button" data-type="page" data-id="contact">Contact</button>
-        <button type="button" data-type="page" data-id="follow">Follow me</button>
-        <button type="button" data-type="page" data-id="downloads">Downloads</button>
+        <a href="https://example.com/home" data-type="page" data-id="home">Home</a>
+        <a href="https://example.com/blog" data-type="page" data-id="blog">Blog</a>
+        <a href="https://example.com/contact" data-type="page" data-id="contact">Contact</a>
+        <a href="https://example.com/follow" data-type="page" data-id="follow">Follow me</a>
+        <a href="https://example.com/downloads" data-type="page" data-id="downloads">Downloads</a>
       </div>
     </section>
   </div>
