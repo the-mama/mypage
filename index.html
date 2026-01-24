@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mahesh — Data Engineer Portfolio</title>
+  <title>The Mahesh — Data Engineer</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
@@ -99,19 +99,23 @@
     }
 
     .portrait {
-      width: 140px;
-      height: 140px;
+      width: 148px;
+      height: 148px;
       border-radius: 50%;
+      padding: 4px;
       background:
         radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)),
         linear-gradient(130deg, rgba(30, 58, 138, 0.2), rgba(14, 165, 233, 0.4));
-      display: grid;
-      place-items: center;
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.9rem;
+      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.18);
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: #ffffff;
     }
 
     .card {
@@ -291,19 +295,21 @@
   <div class="page">
     <header class="hero">
       <div>
-        <div class="eyebrow">Data Engineer Portfolio</div>
-        <h1>Mahesh Kumar</h1>
+        <div class="eyebrow">Data Engineer</div>
+        <h1>The Mahesh</h1>
         <p class="headline">
           Data engineer focused on reliability, performance, and clear analytics. I build lakehouse platforms,
           streaming pipelines, and governance layers that keep decision-making trustworthy.
         </p>
         <div class="hero-meta">
-          <span><span class="dot"></span> Bangalore, IN</span>
-          <span><span class="dot"></span> Open to consulting</span>
-          <span><span class="dot"></span> mahesh@email.com</span>
+          <span><span class="dot"></span> London, UK</span>
+          <span><span class="dot"></span> Open for Colloboration</span>
+          <span><span class="dot"></span> admin@themahesh.org</span>
         </div>
       </div>
-      <div class="portrait" aria-label="Photo placeholder">PHOTO</div>
+      <div class="portrait">
+        <img src="my_photo.jpg" alt="The Mahesh" />
+      </div>
     </header>
 
     <section class="card">
@@ -319,6 +325,16 @@
         <span class="pill">Observability</span>
         <span class="pill">Data Quality</span>
         <span class="pill">Cost Optimization</span>
+        <span class="pill">Azure</span>
+        <span class="pill">Azure Data Factory</span>
+        <span class="pill">Azure Synapse</span>
+        <span class="pill">Databricks</span>
+        <span class="pill">DAB</span>
+        <span class="pill">Spark Declarative Pipelines</span>
+        <span class="pill">Data Warehouse</span>
+        <span class="pill">Microsoft Fabric</span>
+        <span class="pill">OneLake</span>
+        <span class="pill">Power BI</span>
       </div>
     </section>
 
