@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADF Incremental Load Pattern</title>
+</head>
+<body>
+
+<h1>Azure Data Factory: Incremental Load Pattern (Production Design)</h1>
+
+<p>
+In real-world data engineering systems, loading full datasets every time is not scalable. 
+To solve this, I implemented an Incremental Load pattern using a watermark-based approach in Azure Data Factory.
+</p>
+
+<hr>
+
+<h2>Problem Statement</h2>
+<p>
+We needed to ingest data from a source system that contained millions of rows.
+Full reloads were causing performance issues, high cost, and long execution times.
+</p>
+
+<h2>Solution Approach</h2>
+<p>
+We used a <b>Control Table (Watermark Strategy)</b> to track the last successful load timestamp.
+Only new or updated records were extracted during each pipeline run.
+</p>
+
+<h2>Architecture Design</h2>
+<ul>
+    <li>Source: SQL / API / File System</li>
+    <li>ADF Lookup activity to read watermark</li>
+    <li>Copy Activity with parameterized query</li>
+    <li>Sink: ADLS Gen2 (Bronze Layer)</li>
+</ul>
+
+<h2>Key Logic</h2>
+<pre>
+SELECT *
+FROM SourceTable
+WHERE ModifiedDate > @LastWatermark
+</pre>
+
+<h2>Benefits</h2>
+<ul>
+    <li>Reduced data movement by ~80%</li>
+    <li>Faster pipeline execution</li>
+    <li>Supports near real-time ingestion</li>
+    <li>Scalable for large datasets</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+<p>
+Handling late-arriving data is critical. We added a buffer window of 5–10 minutes 
+to avoid missing records due to timestamp delays.
+</p>
+
+</body>
+</html>

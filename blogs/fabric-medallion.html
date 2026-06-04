@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medallion Architecture in Microsoft Fabric</title>
+</head>
+<body>
+
+<h1>Implementing Medallion Architecture in Microsoft Fabric</h1>
+
+<p>
+Medallion Architecture is a modern data design pattern used to structure data into Bronze, Silver, and Gold layers.
+In Microsoft Fabric, this approach helps enforce data quality, governance, and scalability.
+</p>
+
+<hr>
+
+<h2>Layer Overview</h2>
+
+<h3>Bronze Layer (Raw Data)</h3>
+<ul>
+    <li>Raw ingestion from APIs, files, databases</li>
+    <li>No transformation applied</li>
+    <li>Stored in OneLake</li>
+</ul>
+
+<h3>Silver Layer (Cleaned Data)</h3>
+<ul>
+    <li>Data cleansing and standardization</li>
+    <li>Deduplication and schema alignment</li>
+    <li>Business-ready structure begins</li>
+</ul>
+
+<h3>Gold Layer (Business Data)</h3>
+<ul>
+    <li>Aggregated and modeled data</li>
+    <li>Used for Power BI dashboards</li>
+    <li>Star schema or wide tables</li>
+</ul>
+
+<h2>Implementation in Fabric</h2>
+<ul>
+    <li>Data stored in OneLake</li>
+    <li>Notebooks used for transformation</li>
+    <li>Data Pipelines for orchestration</li>
+    <li>Lakehouse for storage abstraction</li>
+</ul>
+
+<h2>Why This Matters</h2>
+<ul>
+    <li>Improves data quality step-by-step</li>
+    <li>Supports multiple consumers</li>
+    <li>Enables scalable architecture</li>
+</ul>
+
+<h2>Real Use Case</h2>
+<p>
+In a recent project, we processed NHS dataset streams using Bronze → Silver → Gold layers,
+ensuring clean reporting datasets for analytics dashboards.
+</p>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SCD Type 2 Implementation in SQL Server</title>
+</head>
+<body>
+
+<h1>Slowly Changing Dimension Type 2 (SCD Type 2) Implementation</h1>
+
+<p>
+SCD Type 2 is used to maintain historical changes in dimension tables by creating new records instead of overwriting existing ones.
+This is critical for auditability in data warehouses.
+</p>
+
+<hr>
+
+<h2>Business Requirement</h2>
+<p>
+We needed to track changes in customer address and status over time while preserving historical data.
+</p>
+
+<h2>Design Approach</h2>
+<ul>
+    <li>Surrogate Key used as primary key</li>
+    <li>Effective Start Date / End Date columns</li>
+    <li>Current Flag (IsCurrent)</li>
+</ul>
+
+<h2>Table Structure</h2>
+
+<pre>
+Customer_Dim
+-------------
+CustomerKey (PK)
+CustomerID
+Name
+Address
+StartDate
+EndDate
+IsCurrent
+</pre>
+
+<h2>Logic Flow</h2>
+
+<pre>
+IF record exists AND data changed:
+    - Expire old record (EndDate = GETDATE(), IsCurrent = 0)
+    - Insert new record (IsCurrent = 1)
+ELSE
+    - Insert new record
+</pre>
+
+<h2>SQL Implementation (Simplified)</h2>
+
+<pre>
+UPDATE Customer_Dim
+SET EndDate = GETDATE(),
+    IsCurrent = 0
+WHERE CustomerID = @CustomerID
+AND IsCurrent = 1;
+
+INSERT INTO Customer_Dim
+(CustomerID, Name, Address, StartDate, EndDate, IsCurrent)
+VALUES
+(@CustomerID, @Name, @Address, GETDATE(), NULL, 1);
+</pre>
+
+<h2>Benefits</h2>
+<ul>
+    <li>Full history tracking</li>
+    <li>Time-travel analytics</li>
+    <li>Accurate reporting over time</li>
+</ul>
+
+<h2>Real Project Usage</h2>
+<p>
+This pattern was used in AddressBase Premium data integration to track property changes over time.
+</p>
+
+</body>
+</html>
