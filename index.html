@@ -457,11 +457,11 @@
     <section class="card">
       <h2 class="section-title">Find More</h2>
       <div class="footer-links">
-        <a href="https://example.com/home" data-type="page" data-id="home">Home</a>
-        <a href="https://idataengineer.blogspot.com" data-type="page" data-id="blog">Blog</a>
-        <a href="https://example.com/contact" data-type="page" data-id="contact">Contact</a>
-        <a href="https://example.com/follow" data-type="page" data-id="follow">Follow me</a>
-        <a href="https://example.com/downloads" data-type="page" data-id="downloads">Downloads</a>
+        <a href="index.html" data-type="page" data-id="home">Home</a>
+        <a href="data-engineering.html" data-type="page" data-id="data-engineering">Data Engineering</a>
+        <a href="personal.html" data-type="page" data-id="personal">Personal</a>
+        <a href="books.html" data-type="page" data-id="books">Books I Read</a>
+        <a href="resources.html" data-type="page" data-id="downloads">Free Resources</a>
       </div>
     </section>
   </div>
@@ -512,30 +512,34 @@
       pages: {
         home: {
           title: "Home",
-          body: "Project highlights, latest wins, and key metrics.",
-          tags: ["Overview", "Highlights"]
+          body: "Overview of my work, projects and experience.",
+          tags: ["Portfolio", "Profile"]
         },
-        blog: {
-          title: "Blog",
-          body: "Deep dives on data modeling, governance, and reliability engineering.",
-          tags: ["Writing", "Insights"]
+      
+        "data-engineering": {
+          title: "Data Engineering",
+          body: "Azure, Fabric, Databricks, SQL, ETL/ELT and real-world project implementations.",
+          tags: ["Azure", "Fabric", "SQL"]
         },
-        contact: {
-          title: "Contact",
-          body: "Let’s discuss your data platform roadmap.",
-          tags: ["Email", "Availability"]
+      
+        personal: {
+          title: "Personal",
+          body: "Career journey, productivity, lessons learned and personal experiences.",
+          tags: ["Career", "Growth"]
         },
-        follow: {
-          title: "Follow me",
-          body: "LinkedIn, GitHub, and speaking engagements.",
-          tags: ["Social", "Talks"]
+      
+        books: {
+          title: "Books I Read",
+          body: "Books, reviews, summaries and key takeaways.",
+          tags: ["Books", "Learning"]
         },
+      
         downloads: {
-          title: "Downloads",
-          body: "Resume, project one-pagers, and architecture templates.",
-          tags: ["Resume", "Templates"]
+          title: "Free Resources",
+          body: "Templates, interview guides, learning paths and useful references.",
+          tags: ["Resources", "Downloads"]
         }
-      }
+  }
     };
 
     const clearTags = () => {
