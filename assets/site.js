@@ -1,38 +1,5 @@
 (function () {
-  const themes = ["auto", "dark", "classic"];
-  const savedTheme = localStorage.getItem("site-theme") || "auto";
   const pageSize = 5;
-
-  function applyTheme(theme) {
-    const nextTheme = themes.includes(theme) ? theme : "auto";
-    if (nextTheme === "auto") {
-      document.documentElement.removeAttribute("data-theme");
-    } else {
-      document.documentElement.setAttribute("data-theme", nextTheme);
-    }
-    localStorage.setItem("site-theme", nextTheme);
-    document.querySelectorAll(".theme-control button").forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.theme === nextTheme));
-    });
-  }
-
-  function installThemeControl() {
-    const navWrap = document.querySelector("nav .nav-wrap");
-    if (!navWrap || document.querySelector(".theme-control")) return;
-
-    const control = document.createElement("div");
-    control.className = "theme-control";
-    control.setAttribute("aria-label", "Theme");
-    control.innerHTML = themes
-      .map((theme) => `<button type="button" data-theme="${theme}">${theme}</button>`)
-      .join("");
-    control.addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-theme]");
-      if (button) applyTheme(button.dataset.theme);
-    });
-    navWrap.appendChild(control);
-    applyTheme(localStorage.getItem("site-theme") || "auto");
-  }
 
   function parseFrontmatter(markdown) {
     if (!markdown.startsWith("---")) return { data: {}, content: markdown };
@@ -200,7 +167,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    installThemeControl();
     document.querySelectorAll("[data-blog-manifest]").forEach(installBlogList);
 
     const postPath = new URLSearchParams(window.location.search).get("post");
@@ -215,6 +181,4 @@
       });
     }
   });
-
-  applyTheme(savedTheme);
 })();
