@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ADF Incremental Load Pattern — The Mahesh</title>
+  <title>dbt Medallion Architecture — The Mahesh</title>
   <link href="https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic" rel="stylesheet" type="text/css"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Rubik+Storm&family=Space+Grotesk:wght@500;600;700&display=swap');
@@ -188,124 +188,98 @@
   <div class="page">
     <header class="header">
       <div class="eyebrow">Data Engineering</div>
-      <h1>Azure Data Factory: Incremental Load Pattern</h1>
-      <p class="headline">Production-grade incremental loading with watermark strategy — scaling from millions to billions of rows</p>
+      <h1>dbt Medallion Architecture</h1>
+      <p class="headline">Building scalable, maintainable data warehouses with dbt's layered approach — Bronze, Silver, Gold</p>
       <div class="meta">
         <span>June 2024</span>
         <span>•</span>
-        <span>Azure Data Factory, ETL, Production</span>
+        <span>dbt, Databricks, Data Modeling</span>
       </div>
     </header>
 
     <section class="card">
-      <h2>The Problem</h2>
+      <h2>What is Medallion Architecture?</h2>
       <p>
-        In real-world data engineering systems, loading full datasets every time is not scalable.
-        Imagine a source system with 500M rows. A full reload takes 3 hours, costs $200, and crushes the network.
-        You need to ingest only new or modified data—incrementally.
+        The Medallion Architecture (Bronze-Silver-Gold) is a design pattern for organizing data in a lakehouse.
+        Each layer has a specific purpose: raw ingestion, transformation, and business-ready analytics.
+        When implemented with dbt, it becomes a powerful, maintainable system.
       </p>
 
-      <h2>The Solution: Watermark-Based Incremental Load</h2>
+      <h3>Bronze Layer (Raw Data)</h3>
       <p>
-        A watermark is a marker that tracks the last successful load. It answers the question:
-        "What was the last timestamp/ID I loaded?"
+        Stores raw, unmodified data exactly as received from source systems. Think of it as your data landing zone.
       </p>
-
-      <h2>Architecture Design</h2>
       <ul>
-        <li><strong>Control Table:</strong> Stores the watermark (last_load_date, last_load_id)</li>
-        <li><strong>Source System:</strong> SQL database or API with a ModifiedDate column</li>
-        <li><strong>ADF Lookup Activity:</strong> Retrieves the watermark from the control table</li>
-        <li><strong>Copy Activity:</strong> Runs a parameterized query using the watermark</li>
-        <li><strong>Sink:</strong> ADLS Gen2 (Bronze Layer) or SQL DW</li>
-        <li><strong>Update Control Table:</strong> After successful load, update the watermark</li>
+        <li>Direct copy of source data (COPY INTO or ELT)</li>
+        <li>Minimal schema inference</li>
+        <li>Immutable append-only storage</li>
+        <li>No transformations or validations</li>
       </ul>
 
-      <h2>Implementation: Step by Step</h2>
-
-      <h3>Step 1: Create the Control Table</h3>
-      <pre>CREATE TABLE dbo.WatermarkTable (
-    WatermarkID INT PRIMARY KEY,
-    TableName NVARCHAR(255),
-    WatermarkColumn NVARCHAR(255),
-    WatermarkValue DATETIME,
-    LastUpdateTime DATETIME
-);
-
-INSERT INTO dbo.WatermarkTable VALUES
-(1, 'SourceTable', 'ModifiedDate', '2024-01-01', GETDATE());</pre>
-
-      <h3>Step 2: ADF Pipeline Configuration</h3>
-      <ul>
-        <li><strong>Lookup Activity 1:</strong> Read current watermark from control table</li>
-        <li><strong>Lookup Activity 2:</strong> Get MAX(ModifiedDate) from source</li>
-        <li><strong>Copy Activity:</strong> Extract only rows WHERE ModifiedDate &gt; @WatermarkValue</li>
-        <li><strong>Stored Procedure Activity:</strong> Update control table with new watermark</li>
-      </ul>
-
-      <h3>Step 3: Parameterized Query</h3>
-      <pre>SELECT *
-FROM SourceTable
-WHERE ModifiedDate &gt; @LastWatermark
-  AND ModifiedDate &lt;= @NewWatermark
-ORDER BY ModifiedDate;</pre>
-
-      <h2>Key Considerations</h2>
-
-      <h3>Late-Arriving Data</h3>
+      <h3>Silver Layer (Cleaned & Deduplicated)</h3>
       <p>
-        Records sometimes arrive late due to system delays. Add a buffer window to avoid missing data.
+        dbt models run here to clean, deduplicate, and validate data. Business logic begins to emerge.
       </p>
-      <pre>-- Load data from watermark to (now - 5 minutes)
-WHERE ModifiedDate &gt; @LastWatermark
-  AND ModifiedDate &lt;= DATEADD(MINUTE, -5, GETDATE())</pre>
+      <pre>{{ config(materialized='incremental', unique_key='id') }}
 
-      <h3>Handling Updates vs. Inserts</h3>
-      <p>
-        If your source tracks both inserts and updates with ModifiedDate, this pattern handles both automatically.
-        If you only have inserts, use an CreatedDate column instead.
-      </p>
+SELECT
+  id,
+  customer_name,
+  transaction_date,
+  amount,
+  CURRENT_TIMESTAMP as dbt_loaded_at
+FROM {{ source('raw', 'customer_transactions') }}
+WHERE transaction_date >= '{{ var("start_date") }}'
+  {% if execute %}
+    AND transaction_date > (SELECT MAX(transaction_date) FROM {{ this }})
+  {% endif %}
+QUALIFY ROW_NUMBER() OVER (PARTITION BY id ORDER BY transaction_date DESC) = 1</pre>
 
-      <h3>Idempotency</h3>
+      <h3>Gold Layer (Business Analytics)</h3>
       <p>
-        What if the pipeline fails after copying but before updating the watermark?
-        The next run will re-load the same data. Make your sink idempotent:
+        Aggregate tables optimized for specific use cases. BI tools query directly from here.
       </p>
       <ul>
-        <li>Use MERGE in SQL to upsert data</li>
-        <li>Or use Parquet/Delta files with OVERWRITE mode for specific date partitions</li>
+        <li>Pre-aggregated metrics and KPIs</li>
+        <li>Denormalized for fast query performance</li>
+        <li>Domain-specific marts (finance, marketing, operations)</li>
+        <li>Materialized as tables (not views) for speed</li>
       </ul>
 
-      <h2>Real-World Example</h2>
+      <h2>Real-World Implementation</h2>
       <p>
-        At a fintech company, we loaded daily transaction records (100M+) into ADLS.
+        In a recent project, I implemented medallion architecture for a fintech company processing 500M transactions daily:
       </p>
       <ul>
-        <li><strong>Without incremental:</strong> 2.5 hours per day, $150 compute cost</li>
-        <li><strong>With watermark:</strong> 8 minutes per day, $5 compute cost</li>
-        <li><strong>Savings:</strong> 96% time reduction, 97% cost reduction</li>
+        <li><strong>Bronze:</strong> 50GB daily raw transaction data from 12 source systems</li>
+        <li><strong>Silver:</strong> Standardized schema, deduplication, lineage tracking (12GB after cleanup)</li>
+        <li><strong>Gold:</strong> 4 analytics marts (daily balance, transaction summary, fraud scoring, reporting)</li>
       </ul>
 
-      <h2>Benefits</h2>
+      <p>
+        Using dbt's incremental models and staging tables, the entire daily pipeline ran in 18 minutes.
+        Without medallion + dbt, it took 3 hours with full reprocessing.
+      </p>
+
+      <h2>dbt Best Practices</h2>
       <ul>
-        <li>Reduced data movement by 95%+ for daily loads</li>
-        <li>Faster pipeline execution (minutes instead of hours)</li>
-        <li>Lower infrastructure costs</li>
-        <li>Supports near real-time ingestion (can run hourly or more frequently)</li>
-        <li>Scales to billions of rows without overhead</li>
+        <li><strong>Staging models:</strong> Rename columns, fix data types at Bronze→Silver boundary</li>
+        <li><strong>Source freshness:</strong> Track when source data was last updated</li>
+        <li><strong>Tests:</strong> NOT NULL, unique, referential integrity at every layer</li>
+        <li><strong>Documentation:</strong> Describe business meaning, not just column names</li>
+        <li><strong>Macros:</strong> Abstract common transformations (date standardization, string cleaning)</li>
       </ul>
 
-      <h2>Lessons Learned</h2>
+      <h2>Key Takeaways</h2>
       <ul>
-        <li>Always add a buffer window (5–10 minutes) for late data</li>
-        <li>Monitor for watermark drift—if data arrives out of order, you'll miss it</li>
-        <li>Test failure scenarios: What happens if the pipeline crashes mid-run?</li>
-        <li>Log every watermark update—it saves hours during debugging</li>
-        <li>Use source freshness checks: Alert if no new data arrives for N hours (data quality gate)</li>
+        <li>Medallion keeps data organized. Debugging becomes easier when layers have clear boundaries</li>
+        <li>dbt's dependency tracking ensures correct execution order. No manual orchestration needed</li>
+        <li>Incremental models reduce data movement. Silver and Gold scale efficiently</li>
+        <li>Version control dbt projects. You get free audit trails and rollback capability</li>
       </ul>
 
       <p style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(15, 23, 42, 0.1); color: var(--muted); font-size: 0.95rem;">
-        Watermark-based incremental loading is the industry standard for a reason. Once you implement it once, you'll use it forever.
+        This pattern has become industry standard for good reason — it separates concerns, enables testing at every layer, and makes teams move faster.
       </p>
     </section>
 

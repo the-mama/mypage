@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Quality Monitoring at Scale — The Mahesh</title>
+  <link href="https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic" rel="stylesheet" type="text/css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Rubik+Storm&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --bg: #f6f8fb;
+      --bg-2: #eef2f7;
+      --ink: #0f172a;
+      --muted: #5b6473;
+      --accent: #1e3a8a;
+      --accent-2: #0ea5e9;
+      --accent-3: #6366f1;
+      --card: rgba(255, 255, 255, 0.9);
+      --shadow: rgba(15, 23, 42, 0.08);
+      --sans: "Manrope", "Avenir", sans-serif;
+      --display: "Space Grotesk", "Avenir", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(30, 58, 138, 0.08), transparent 45%),
+        radial-gradient(circle at 80% 15%, rgba(14, 165, 233, 0.08), transparent 45%),
+        radial-gradient(circle at 70% 75%, rgba(99, 102, 241, 0.08), transparent 50%),
+        linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 42px clamp(20px, 4vw, 56px) 64px;
+      display: grid;
+      gap: 32px;
+    }
+
+    .header {
+      display: grid;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "TransRobotics Italic", "Rubik Storm", var(--display);
+      font-size: clamp(2.4rem, 6vw, 3.2rem);
+      line-height: 1.1;
+    }
+
+    .headline {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 32px 28px;
+      box-shadow: 0 18px 36px var(--shadow);
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      margin: 24px 0 12px;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      margin: 16px 0 8px;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    ul, ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 6px 0;
+      color: var(--ink);
+    }
+
+    pre {
+      background: rgba(15, 23, 42, 0.04);
+      border-left: 4px solid var(--accent-2);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 16px 0;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      color: var(--accent);
+      font-size: 0.9em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      margin-top: 16px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      transition: width 200ms ease;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 32px clamp(16px, 4vw, 32px) 48px;
+        gap: 24px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 8vw, 2.4rem);
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="eyebrow">Data Engineering</div>
+      <h1>Data Quality Monitoring at Scale</h1>
+      <p class="headline">Building automated, cost-effective DQ systems that catch issues before they reach your users</p>
+      <div class="meta">
+        <span>May 2024</span>
+        <span>•</span>
+        <span>Data Quality, Great Expectations, Monitoring</span>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>The Problem: Why DQ Matters</h2>
+      <p>
+        Bad data costs money. A simple example: a data warehouse team didn't catch that a customer ID field was being NULL'd out upstream.
+        The BI team built dashboards on it. Sales reported inflated numbers. Investors questioned the growth narrative.
+        Cost: 3 months to rebuild, revalidate, and apologize.
+      </p>
+      <p>
+        Manual testing doesn't scale. You can't inspect 100M rows by hand. You need automated, intelligent quality gates.
+      </p>
+
+      <h2>Data Quality Dimensions</h2>
+      <p>Before building a DQ system, understand what you're monitoring:</p>
+      <ul>
+        <li><strong>Completeness:</strong> Are all required fields populated? NULL or empty rate &lt; threshold?</li>
+        <li><strong>Accuracy:</strong> Do values match the source of truth? (e.g., revenue from accounting system)</li>
+        <li><strong>Consistency:</strong> Do related fields agree? (customer name in orders table vs. customers table)</li>
+        <li><strong>Timeliness:</strong> Is data fresh? Last update timestamp within SLA?</li>
+        <li><strong>Uniqueness:</strong> Are there unexpected duplicates? PK violations?</li>
+      </ul>
+
+      <h2>My Implementation: 3-Tier Approach</h2>
+
+      <h3>Tier 1: Automated Schema Validation</h3>
+      <p>Run on every pipeline execution. Catches obvious breaks immediately.</p>
+      <pre>SELECT
+  column_name,
+  data_type,
+  is_nullable,
+  COUNT(*) as NULL_count
+FROM my_table
+WHERE 1=1
+GROUP BY column_name, data_type, is_nullable
+HAVING is_nullable = 0 AND NULL_count > 0</pre>
+      <p>This query alerts you if a NOT NULL column has NULLs (schema contract violation).</p>
+
+      <h3>Tier 2: Statistical Profiling (Weekly)</h3>
+      <p>Compare current metrics against baseline. Detect drift early.</p>
+      <ul>
+        <li>Min/max/median for numeric columns</li>
+        <li>Distribution histograms (detect new value categories)</li>
+        <li>Cardinality trends (is the distinct count exploding?)</li>
+        <li>Percent complete by column</li>
+      </ul>
+
+      <h3>Tier 3: Business Logic Tests (On-Demand)</h3>
+      <p>Domain-specific assertions. These need human input to define.</p>
+      <ul>
+        <li>Revenue always &gt; 0 (no negative sales allowed)</li>
+        <li>Order quantity matches invoice quantity</li>
+        <li>Customer age 18–120 (catch data entry mistakes)</li>
+        <li>No future dates unless explicitly allowed</li>
+      </ul>
+
+      <h2>Cost Optimization Tricks</h2>
+
+      <h3>Sample, Don't Scan</h3>
+      <p>
+        For 1B-row tables, a 1% random sample is statistically significant for most tests.
+        This cuts scanning costs by 99% while maintaining quality.
+      </p>
+      <pre>SELECT *
+FROM my_huge_table
+WHERE RAND() &lt; 0.01
+LIMIT 10000000</pre>
+
+      <h3>Incremental Quality Checks</h3>
+      <p>
+        Don't recheck all historical data. Only validate new/changed rows.
+      </p>
+      <pre>-- Only check rows loaded today
+SELECT *
+FROM silver.transactions
+WHERE dbt_loaded_at::DATE = CURRENT_DATE</pre>
+
+      <h3>Aggregate First, Check After</h3>
+      <p>
+        Test aggregated metrics (daily revenue sum) not raw rows. Much cheaper.
+      </p>
+
+      <h2>Real Incident: What DQ Prevented</h2>
+      <p>
+        A payment processor's transaction feed started sending duplicate records.
+        Without quality checks, analysts would have reported double the transaction volume.
+      </p>
+      <p>
+        Our uniqueness check caught it within 2 minutes:
+        duplicate transaction IDs exceeded threshold. Pipeline auto-paused.
+        Engineering team investigated and found a race condition in the source system's write logic.
+        Fixed in 30 minutes. Impact: zero.
+      </p>
+
+      <h2>Recommended Tools</h2>
+      <ul>
+        <li><strong>Great Expectations:</strong> Python-native DQ framework. Integrates with dbt, Spark, Databricks.</li>
+        <li><strong>dbt Tests:</strong> Version-controlled, simple, integrated with your data model.</li>
+        <li><strong>Custom SQL + Airflow:</strong> Full control. Overkill unless you have complex custom logic.</li>
+        <li><strong>Databricks Quality Monitoring:</strong> Built-in, easy for Delta Lake tables.</li>
+      </ul>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Quality checks are not overhead—they're insurance against costly mistakes</li>
+        <li>Start simple (NOT NULL, uniqueness). Add complexity as needed</li>
+        <li>Automate tier 1 &amp; 2. Keep tier 3 small and business-driven</li>
+        <li>Sample aggressively. Most tests don't need 100% of data</li>
+        <li>Alert on change, not on absolute value. "Revenue is odd" matters more than "Revenue is $1M"</li>
+      </ul>
+
+      <p style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(15, 23, 42, 0.1); color: var(--muted); font-size: 0.95rem;">
+        Bad data is preventable. Invest in quality systems early. Your future self will thank you.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top: 0;">Back to Resources</h2>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../data-engineering.html">All Blogs</a>
+        <a href="../resources.html">Resources</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

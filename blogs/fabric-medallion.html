@@ -1,62 +1,372 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Medallion Architecture in Microsoft Fabric</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medallion Architecture in Microsoft Fabric — The Mahesh</title>
+  <link href="https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic" rel="stylesheet" type="text/css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Rubik+Storm&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --bg: #f6f8fb;
+      --bg-2: #eef2f7;
+      --ink: #0f172a;
+      --muted: #5b6473;
+      --accent: #1e3a8a;
+      --accent-2: #0ea5e9;
+      --accent-3: #6366f1;
+      --card: rgba(255, 255, 255, 0.9);
+      --shadow: rgba(15, 23, 42, 0.08);
+      --sans: "Manrope", "Avenir", sans-serif;
+      --display: "Space Grotesk", "Avenir", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(30, 58, 138, 0.08), transparent 45%),
+        radial-gradient(circle at 80% 15%, rgba(14, 165, 233, 0.08), transparent 45%),
+        radial-gradient(circle at 70% 75%, rgba(99, 102, 241, 0.08), transparent 50%),
+        linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 42px clamp(20px, 4vw, 56px) 64px;
+      display: grid;
+      gap: 32px;
+    }
+
+    .header {
+      display: grid;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "TransRobotics Italic", "Rubik Storm", var(--display);
+      font-size: clamp(2.4rem, 6vw, 3.2rem);
+      line-height: 1.1;
+    }
+
+    .headline {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 32px 28px;
+      box-shadow: 0 18px 36px var(--shadow);
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      margin: 24px 0 12px;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      margin: 16px 0 8px;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    ul, ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 6px 0;
+      color: var(--ink);
+    }
+
+    pre {
+      background: rgba(15, 23, 42, 0.04);
+      border-left: 4px solid var(--accent-2);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 16px 0;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      color: var(--accent);
+      font-size: 0.9em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      margin-top: 16px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      transition: width 200ms ease;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 32px clamp(16px, 4vw, 32px) 48px;
+        gap: 24px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 8vw, 2.4rem);
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <header class="header">
+      <div class="eyebrow">Data Engineering</div>
+      <h1>Medallion Architecture in Microsoft Fabric</h1>
+      <p class="headline">Implementing the three-layer architecture for enterprise analytics using Fabric's OneLake and Delta Lake</p>
+      <div class="meta">
+        <span>May 2024</span>
+        <span>•</span>
+        <span>Microsoft Fabric, OneLake, Architecture</span>
+      </div>
+    </header>
 
-<h1>Implementing Medallion Architecture in Microsoft Fabric</h1>
+    <section class="card">
+      <h2>Why Medallion in Fabric?</h2>
+      <p>
+        Microsoft Fabric is built on Delta Lake. The medallion architecture maps perfectly to Fabric's lakehouse model.
+        Unlike traditional data warehouses, Fabric abstracts away infrastructure—you focus on data logic.
+      </p>
 
-<p>
-Medallion Architecture is a modern data design pattern used to structure data into Bronze, Silver, and Gold layers.
-In Microsoft Fabric, this approach helps enforce data quality, governance, and scalability.
-</p>
+      <h2>The Three Layers</h2>
 
-<hr>
+      <h3>Bronze Layer: Raw Data Landing</h3>
+      <p>
+        Store raw data exactly as received from source systems. No transformations, no schema enforcement.
+        This is your immutable source of truth for auditing and compliance.
+      </p>
+      <ul>
+        <li>Data ingested via Data Factory pipelines or direct uploads</li>
+        <li>Stored in OneLake (Fabric's unified storage)</li>
+        <li>Partitioned by ingestion date for lifecycle management</li>
+        <li>Append-only: new data added, old data never deleted</li>
+        <li>Example: Raw JSON from APIs, CSV uploads, database exports</li>
+      </ul>
 
-<h2>Layer Overview</h2>
+      <h3>Silver Layer: Cleaned &amp; Validated</h3>
+      <p>
+        Apply business rules, deduplication, and schema validation. This is where data governance begins.
+        Schema is enforced. Quality checks are applied.
+      </p>
+      <ul>
+        <li>Remove duplicates using natural key + timestamp</li>
+        <li>Type casting: dates to DATE, amounts to DECIMAL</li>
+        <li>Standardization: trim whitespace, uppercase/lowercase</li>
+        <li>Null handling: replace invalid NULLs with defaults</li>
+        <li>Add audit columns: load_timestamp, source_system</li>
+      </ul>
 
-<h3>Bronze Layer (Raw Data)</h3>
-<ul>
-    <li>Raw ingestion from APIs, files, databases</li>
-    <li>No transformation applied</li>
-    <li>Stored in OneLake</li>
-</ul>
+      <h3>Gold Layer: Business-Ready Analytics</h3>
+      <p>
+        Pre-aggregated tables optimized for BI and analytics.
+        Power BI and other tools query this layer directly.
+      </p>
+      <ul>
+        <li>Domain-specific marts: Sales, Finance, Marketing, Operations</li>
+        <li>Denormalized star schema for speed</li>
+        <li>Pre-calculated metrics and KPIs</li>
+        <li>Materialized as tables (not views) for performance</li>
+      </ul>
 
-<h3>Silver Layer (Cleaned Data)</h3>
-<ul>
-    <li>Data cleansing and standardization</li>
-    <li>Deduplication and schema alignment</li>
-    <li>Business-ready structure begins</li>
-</ul>
+      <h2>Bronze Layer Example</h2>
+      <p>
+        Raw customer transactions stored as Parquet files, partitioned by date:
+      </p>
+      <pre>Bronze Layer Structure:
+/transactions/
+  /year=2024/month=01/day=15/
+    part-00001.parquet
+    part-00002.parquet
+  /year=2024/month=01/day=16/
+    part-00001.parquet</pre>
 
-<h3>Gold Layer (Business Data)</h3>
-<ul>
-    <li>Aggregated and modeled data</li>
-    <li>Used for Power BI dashboards</li>
-    <li>Star schema or wide tables</li>
-</ul>
+      <h2>Silver Layer: Transformation in Notebook</h2>
+      <pre>from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, current_timestamp
+from delta.tables import DeltaTable
 
-<h2>Implementation in Fabric</h2>
-<ul>
-    <li>Data stored in OneLake</li>
-    <li>Notebooks used for transformation</li>
-    <li>Data Pipelines for orchestration</li>
-    <li>Lakehouse for storage abstraction</li>
-</ul>
+spark = SparkSession.builder.appName("medallion").getOrCreate()
 
-<h2>Why This Matters</h2>
-<ul>
-    <li>Improves data quality step-by-step</li>
-    <li>Supports multiple consumers</li>
-    <li>Enables scalable architecture</li>
-</ul>
+# Read Bronze
+bronze_df = spark.read.format("delta")\
+  .load("/mnt/bronze/transactions")
 
-<h2>Real Use Case</h2>
-<p>
-In a recent project, we processed NHS dataset streams using Bronze → Silver → Gold layers,
-ensuring clean reporting datasets for analytics dashboards.
-</p>
+# Silver transformations
+silver_df = bronze_df \
+  .filter(col("transaction_id").isNotNull()) \
+  .filter((col("amount") > 0) & (col("amount") < 1000000)) \
+  .dropDuplicates(["transaction_id"]) \
+  .withColumn("transaction_date", col("transaction_date").cast("date")) \
+  .withColumn("amount", col("amount").cast("decimal(10,2)")) \
+  .withColumn("loaded_at", current_timestamp())
 
+# Upsert into Silver
+silver_table = DeltaTable.forPath(spark, "/mnt/silver/transactions")
+silver_table.alias("t").merge(
+  silver_df.alias("s"),
+  "t.transaction_id = s.transaction_id"
+).whenMatchedUpdateAll() \
+ .whenNotMatchedInsertAll() \
+ .execute()
+
+print("Silver layer updated successfully")</pre>
+
+      <h2>Gold Layer: SQL Aggregations</h2>
+      <pre>-- Create daily transaction summary
+CREATE TABLE gold.daily_transaction_summary AS
+SELECT
+  DATE(transaction_date) as transaction_date,
+  customer_id,
+  COUNT(*) as transaction_count,
+  SUM(amount) as total_amount,
+  AVG(amount) as avg_amount,
+  MIN(amount) as min_amount,
+  MAX(amount) as max_amount
+FROM silver.transactions
+GROUP BY DATE(transaction_date), customer_id;</pre>
+
+      <h2>Fabric-Specific Features</h2>
+
+      <h3>Use Fabric Pipelines for Orchestration</h3>
+      <p>
+        Schedule notebooks with built-in scheduler. Monitor execution with visual DAG.
+      </p>
+
+      <h3>Enable Row-Level Security (Gold Layer)</h3>
+      <p>
+        Control which users see which data. Apply at the table level, then connect to Power BI.
+      </p>
+
+      <h3>Use Shortcuts Instead of Copying</h3>
+      <p>
+        Create shortcuts to Bronze tables from other workspaces. Data lives once, referenced many times.
+      </p>
+
+      <h3>Monitor with Real-Time Analytics</h3>
+      <p>
+        Use Fabric's KQL database to track pipeline execution, data quality metrics, and data freshness.
+      </p>
+
+      <h2>Cost Optimization</h2>
+      <ul>
+        <li><strong>Compress Bronze:</strong> Parquet with snappy compression saves 70% storage</li>
+        <li><strong>Partition by date:</strong> Query only relevant dates. Scan cost drops 90%</li>
+        <li><strong>Use Delta cache:</strong> Fabric auto-caches hot tables. Subsequent queries are instant</li>
+        <li><strong>Archive old data:</strong> Move Bronze data older than 1 year to archive storage</li>
+        <li><strong>Minimize shuffles:</strong> SQL wins over Spark for aggregations (better query optimization)</li>
+      </ul>
+
+      <h2>Real-World Scale</h2>
+      <p>
+        A retail company implemented medallion for 50M+ daily transactions:
+      </p>
+      <ul>
+        <li><strong>Bronze:</strong> 500GB raw daily data from POS, online, inventory systems</li>
+        <li><strong>Silver:</strong> Deduplicated, cleansed (150GB after compression)</li>
+        <li><strong>Gold:</strong> 6 analytics marts (store-level, product, customer, supply chain, financial, KPI)</li>
+        <li><strong>Pipeline runtime:</strong> 30 minutes end-to-end (Bronze → Silver → Gold)</li>
+        <li><strong>Cost:</strong> $50 per day on F64 Fabric capacity (covers 500+ daily workloads)</li>
+        <li><strong>Availability:</strong> 99.9% uptime (managed by Microsoft)</li>
+      </ul>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Medallion is not a suggestion—it's the standard for modern data platforms</li>
+        <li>Bronze is immutable. Silver is cleansed. Gold is optimized for BI</li>
+        <li>Use notebooks for Bronze → Silver. Use SQL for Silver → Gold (better performance)</li>
+        <li>Partition everything by date. Enables retention policies and cost control</li>
+        <li>Monitor data freshness and quality. Automate alerts for stale or bad data</li>
+      </ul>
+
+      <p style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(15, 23, 42, 0.1); color: var(--muted); font-size: 0.95rem;">
+        Fabric's managed infrastructure removes the pain of cluster management. Medallion architecture removes the pain of data organization. Together, they enable teams to focus on analytics, not operations.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top: 0;">Back to Resources</h2>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../data-engineering.html">All Blogs</a>
+        <a href="../resources.html">Resources</a>
+      </div>
+    </section>
+  </div>
 </body>
 </html>

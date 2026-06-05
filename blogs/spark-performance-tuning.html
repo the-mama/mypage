@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spark Job Performance Tuning — The Mahesh</title>
+  <link href="https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic" rel="stylesheet" type="text/css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Rubik+Storm&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --bg: #f6f8fb;
+      --bg-2: #eef2f7;
+      --ink: #0f172a;
+      --muted: #5b6473;
+      --accent: #1e3a8a;
+      --accent-2: #0ea5e9;
+      --accent-3: #6366f1;
+      --card: rgba(255, 255, 255, 0.9);
+      --shadow: rgba(15, 23, 42, 0.08);
+      --sans: "Manrope", "Avenir", sans-serif;
+      --display: "Space Grotesk", "Avenir", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(30, 58, 138, 0.08), transparent 45%),
+        radial-gradient(circle at 80% 15%, rgba(14, 165, 233, 0.08), transparent 45%),
+        radial-gradient(circle at 70% 75%, rgba(99, 102, 241, 0.08), transparent 50%),
+        linear-gradient(140deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 42px clamp(20px, 4vw, 56px) 64px;
+      display: grid;
+      gap: 32px;
+    }
+
+    .header {
+      display: grid;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "TransRobotics Italic", "Rubik Storm", var(--display);
+      font-size: clamp(2.4rem, 6vw, 3.2rem);
+      line-height: 1.1;
+    }
+
+    .headline {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 32px 28px;
+      box-shadow: 0 18px 36px var(--shadow);
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      margin: 24px 0 12px;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      margin: 16px 0 8px;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    ul, ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+      line-height: 1.7;
+    }
+
+    li {
+      margin: 6px 0;
+      color: var(--ink);
+    }
+
+    pre {
+      background: rgba(15, 23, 42, 0.04);
+      border-left: 4px solid var(--accent-2);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 16px 0;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      color: var(--accent);
+      font-size: 0.9em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      margin-top: 16px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      transition: width 200ms ease;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 32px clamp(16px, 4vw, 32px) 48px;
+        gap: 24px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 8vw, 2.4rem);
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="eyebrow">Data Engineering</div>
+      <h1>Spark Job Performance Tuning</h1>
+      <p class="headline">Transforming 4-hour jobs into 12 minutes — practical tuning strategies that work</p>
+      <div class="meta">
+        <span>April 2024</span>
+        <span>•</span>
+        <span>Spark, Databricks, Performance Optimization</span>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>The Cost of Slow Spark Jobs</h2>
+      <p>
+        A data team ran a daily aggregation job that took 4 hours. Every delay in the morning meant dashboards weren't ready for stakeholders.
+        The job consumed 8 r5.4xlarge nodes on Databricks—costing $500/day or $150k/year.
+        After tuning, it ran in 12 minutes on 2 nodes. Cost: $12/day. Savings: $140k/year.
+      </p>
+      <p>
+        Performance tuning isn't a nice-to-have. It's a business decision.
+      </p>
+
+      <h2>Diagnosing the Problem: Spark UI</h2>
+      <p>Never tune blindly. Always start with the Spark UI.</p>
+      <ul>
+        <li><strong>Jobs Tab:</strong> Which stages are slow? (Look for skewed stage duration)</li>
+        <li><strong>Stages Tab:</strong> Task-level metrics. Is it I/O, CPU, or memory?</li>
+        <li><strong>Executors Tab:</strong> Are executors memory-pressured? Spilling to disk?</li>
+        <li><strong>SQL Tab:</strong> How many records per stage? Unexpected data movement?</li>
+      </ul>
+
+      <h2>Common Issues &amp; Fixes</h2>
+
+      <h3>1. Skewed Partitions (The Most Common Problem)</h3>
+      <p>
+        One partition has 10B rows, others have 100M. That partition becomes the bottleneck.
+      </p>
+      <p><strong>Diagnosis:</strong> In Spark UI, Stages tab shows uneven task duration.</p>
+      <p><strong>Fix: Repartition aggressively</strong></p>
+      <pre>df.repartition(200, "customer_id")\
+  .groupBy("customer_id", "date")\
+  .agg(sum("amount"))</pre>
+      <p>
+        Then, salt the join key to further distribute hot keys:
+      </p>
+      <pre>val salted = df.withColumn("salt", (rand() * 10).cast("int"))
+val joined = salted.join(
+  other_df.withColumn("salt", explode(array((0 to 9).map(lit(_)): _*))),
+  Seq("key", "salt"), "left"
+).drop("salt")</pre>
+
+      <h3>2. Unnecessary Shuffles</h3>
+      <p>
+        Every <code>groupBy</code>, <code>join</code>, or <code>window</code> causes a shuffle.
+        Multiple shuffles = multiple network transfers.
+      </p>
+      <p><strong>Fix: Combine operations to reduce shuffles</strong></p>
+      <pre>-- BAD: 2 shuffles
+df.groupBy("id").agg(sum("sales"))
+  .join(df.groupBy("id").agg(count("*")), "id")
+
+-- GOOD: 1 shuffle
+df.groupBy("id").agg(
+  sum("sales").as("total_sales"),
+  count("*").as("count")
+)</pre>
+
+      <h3>3. Broadcast Join Missing</h3>
+      <p>
+        Joining a 100MB table with a 50GB table triggers a shuffle.
+        If the 100MB table fits in memory, broadcast it instead.
+      </p>
+      <pre>from pyspark.sql.functions import broadcast
+
+small_df = spark.read.table("dim_product")  # 100MB
+large_df = spark.read.table("fact_sales")    # 50GB
+
+joined = large_df.join(broadcast(small_df), "product_id")</pre>
+
+      <h3>4. Too Many Small Files (Listing Bottleneck)</h3>
+      <p>
+        10M small Parquet files take minutes just to list. Querying takes hours.
+      </p>
+      <p><strong>Fix: Coalesce output</strong></p>
+      <pre>df.coalesce(100).write.mode("overwrite").parquet("s3://my-bucket/data")</pre>
+
+      <h3>5. String Operations (Expensive in Spark)</h3>
+      <p>
+        <code>split("col", ",")</code>, regex, UDFs on strings are slow.
+      </p>
+      <pre>-- SLOW:
+SELECT split(data, ",")[0] as first_value
+
+-- FASTER:
+SELECT substring_index(data, ",", 1) as first_value</pre>
+
+      <h2>Real-World Tuning Example</h2>
+      <p>
+        A transaction processing job transformed 2B daily records. Original runtime: 4.5 hours.
+      </p>
+      <ul>
+        <li>Problem 1: Missing broadcast on 200MB dimension table → added broadcast join (30 min saved)</li>
+        <li>Problem 2: Double-grouped aggregation → combined into single groupBy (1 hr 15 min saved)</li>
+        <li>Problem 3: Skewed customer IDs (0.5% of IDs = 30% of rows) → salted key before join (45 min saved)</li>
+        <li>Problem 4: 50M tiny Parquet files → coalesced to 500 files (15 min saved)</li>
+      </ul>
+      <p><strong>Result: 4.5 hours → 12 minutes.</strong></p>
+
+      <h2>Databricks-Specific Tuning</h2>
+      <ul>
+        <li><strong>Delta Cache:</strong> Enable SSD caching for hot tables. 10x I/O speedup.</li>
+        <li><strong>Adaptive Query Execution:</strong> <code>spark.sql.adaptive.enabled true</code>. Auto-tunes partitions at runtime.</li>
+        <li><strong>Liquid Clustering:</strong> Better than partitioning for skewed data. (Databricks Delta 12.0+)</li>
+      </ul>
+
+      <h2>Monitoring &amp; Alerting</h2>
+      <p>
+        After tuning, don't let regressions creep in.
+      </p>
+      <pre>-- Log job metrics
+SELECT
+  job_name,
+  run_date,
+  runtime_minutes,
+  data_processed_gb,
+  cost_per_gb
+FROM job_metrics
+ORDER BY run_date DESC</pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Always start with Spark UI. Guessing is expensive</li>
+        <li>Skew is the #1 performance killer. Repartition and salt aggressively</li>
+        <li>Combine operations to reduce shuffles</li>
+        <li>Broadcast small tables. It's free speed</li>
+        <li>Monitor after tuning. Regression detection is critical</li>
+      </ul>
+
+      <p style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(15, 23, 42, 0.1); color: var(--muted); font-size: 0.95rem;">
+        Slow Spark jobs are a symptom of not looking at the data. Understand your data distribution, and the tuning becomes obvious.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top: 0;">Back to Resources</h2>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../data-engineering.html">All Blogs</a>
+        <a href="../resources.html">Resources</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
