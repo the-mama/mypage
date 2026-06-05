@@ -185,7 +185,9 @@
 
       renderPage();
     } catch (error) {
-      grid.innerHTML = `<p class="post-list-empty">Posts could not be loaded. Serve the site over HTTP and check the manifest path.</p>`;
+      if (!grid.children.length) {
+        grid.innerHTML = `<p class="post-list-empty">Posts are available after the site finishes deploying.</p>`;
+      }
       console.error(error);
     }
   }
