@@ -1,0 +1,12 @@
+{
+  "category": "Data Engineering",
+  "posts": [
+    "data-engineering/blogs/dbt-medallion-architecture.md",
+    "data-engineering/blogs/data-quality-monitoring.md",
+    "data-engineering/blogs/spark-performance-tuning.md",
+    "data-engineering/blogs/lakehouse-fabric-vs-databricks.md",
+    "data-engineering/blogs/adf-incremental-load.md",
+    "data-engineering/blogs/fabric-medallion.md",
+    "data-engineering/blogs/scd-type2.md"
+  ]
+}
