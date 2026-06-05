@@ -78,9 +78,65 @@
       box-shadow: 0 18px 36px var(--shadow);
     }
 
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(246, 248, 251, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      z-index: 1000;
+      margin: -42px -56px 32px -56px;
+      padding: 16px 56px;
+    }
+
+    nav .nav-wrap {
+      max-width: 950px;
+      margin: 0 auto;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: var(--ink);
+      position: relative;
+      font-weight: 500;
+      transition: color 200ms ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      transition: width 200ms ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-2);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: var(--accent-2);
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 20px;
     }
@@ -203,10 +259,41 @@
       .blog-grid {
         grid-template-columns: 1fr;
       }
+
+      nav {
+        margin: -32px -32px 24px -32px;
+        padding: 12px 32px;
+      }
+
+      nav .nav-wrap {
+        gap: 16px;
+        font-size: 0.9rem;
+        max-width: 100%;
+      }
+
+      nav a {
+        font-size: 0.88rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
+  <nav>
+    <div class="nav-wrap">
+      <a href="index.html">Home</a>
+      <a href="data-engineering.html" class="active">Data Engineering</a>
+      <a href="personal.html">Personal</a>
+      <a href="books.html">Books I Read</a>
+      <a href="resources.html">Free Resources</a>
+      <a href="index.html#find-more">Find More</a>
+    </div>
+  </nav>
   <div class="page">
     <header class="header">
       <div class="eyebrow">Deep Dives</div>
@@ -217,7 +304,7 @@
     <section class="card">
       <h2>Featured Articles</h2>
       <div class="blog-grid">
-        <a href="blogs/dbt-medallion-architecture.html" class="blog-card">
+        <a href="data-engineering/blogs/dbt-medallion-architecture.html" class="blog-card">
           <div class="blog-category">Architecture</div>
           <h3 class="blog-title">dbt Medallion Architecture</h3>
           <p class="blog-excerpt">Building scalable, maintainable data warehouses with dbt's layered approach — Bronze, Silver, Gold</p>
@@ -228,7 +315,7 @@
           </div>
         </a>
 
-        <a href="blogs/data-quality-monitoring.html" class="blog-card">
+        <a href="data-engineering/blogs/data-quality-monitoring.html" class="blog-card">
           <div class="blog-category">Quality</div>
           <h3 class="blog-title">Data Quality Monitoring at Scale</h3>
           <p class="blog-excerpt">Building automated, cost-effective DQ systems that catch issues before they reach your users</p>
@@ -239,7 +326,7 @@
           </div>
         </a>
 
-        <a href="blogs/spark-performance-tuning.html" class="blog-card">
+        <a href="data-engineering/blogs/spark-performance-tuning.html" class="blog-card">
           <div class="blog-category">Performance</div>
           <h3 class="blog-title">Spark Job Performance Tuning</h3>
           <p class="blog-excerpt">Transforming 4-hour jobs into 12 minutes — practical tuning strategies that work</p>
@@ -250,7 +337,7 @@
           </div>
         </a>
 
-        <a href="blogs/lakehouse-fabric-vs-databricks.html" class="blog-card">
+        <a href="data-engineering/blogs/lakehouse-fabric-vs-databricks.html" class="blog-card">
           <div class="blog-category">Architecture</div>
           <h3 class="blog-title">Lakehouse Wars: Azure Fabric vs Databricks</h3>
           <p class="blog-excerpt">A practical comparison for teams choosing their data platform</p>
@@ -261,7 +348,7 @@
           </div>
         </a>
 
-        <a href="blogs/adf-incremental-load.html" class="blog-card">
+        <a href="data-engineering/blogs/adf-incremental-load.html" class="blog-card">
           <div class="blog-category">ETL/ELT</div>
           <h3 class="blog-title">ADF Incremental Load Pattern</h3>
           <p class="blog-excerpt">Production-grade incremental loading with watermark strategy to handle massive datasets efficiently</p>
@@ -272,7 +359,7 @@
           </div>
         </a>
 
-        <a href="blogs/fabric-medallion.html" class="blog-card">
+        <a href="data-engineering/blogs/fabric-medallion.html" class="blog-card">
           <div class="blog-category">Architecture</div>
           <h3 class="blog-title">Medallion Architecture in Microsoft Fabric</h3>
           <p class="blog-excerpt">Implementing the three-layer architecture for enterprise analytics using Fabric lakehouse</p>
@@ -283,7 +370,7 @@
           </div>
         </a>
 
-        <a href="blogs/scd-type2.html" class="blog-card">
+        <a href="data-engineering/blogs/scd-type2.html" class="blog-card">
           <div class="blog-category">Data Modeling</div>
           <h3 class="blog-title">Slowly Changing Dimensions Type 2</h3>
           <p class="blog-excerpt">Track historical changes in dimension tables with effective dating and version management</p>
