@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Free Resources — The Mahesh</title>
   <link href="https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Rubik+Storm&family=Space+Grotesk:wght@500;600;700&display=swap');
 
@@ -407,6 +408,120 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    .blog-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.5);
+      z-index: 2000;
+      overflow-y: auto;
+    }
+
+    .blog-modal.active {
+      display: block;
+    }
+
+    .blog-content {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 60px 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+    }
+
+    .blog-content h1,
+    .blog-content h2,
+    .blog-content h3 {
+      font-family: var(--display);
+      color: var(--ink);
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    .blog-content h1 {
+      font-size: 2.2rem;
+      margin-top: 0;
+    }
+
+    .blog-content p {
+      line-height: 1.8;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+
+    .blog-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .blog-content code {
+      background: rgba(15, 23, 42, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+
+    .blog-content pre {
+      background: rgba(15, 23, 42, 0.06);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .blog-content table th,
+    .blog-content table td {
+      border: 1px solid rgba(15, 23, 42, 0.15);
+      padding: 12px;
+      text-align: left;
+    }
+
+    .blog-content table th {
+      background: rgba(15, 23, 42, 0.05);
+      font-weight: 600;
+    }
+
+    .blog-close {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 16px;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 200ms ease;
+    }
+
+    .blog-close:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(14, 165, 233, 0.2);
+    }
+
+    @media (max-width: 720px) {
+      .blog-content {
+        margin: 20px 16px;
+        padding: 30px 20px;
+      }
+
+      .blog-content h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -549,56 +664,8 @@
 
     <section class="card">
       <h2>Learning Resources & Guides</h2>
-      <div class="blog-grid">
-        <a href="blogs/reading-documentation-efficiently.md" class="blog-card">
-          <div class="blog-category">Resources & Learning</div>
-          <h3 class="blog-title">The Art of Reading Technical Documentation Efficiently</h3>
-          <p class="blog-excerpt">Skip the fluff, find the signal — how to read docs like an engineer</p>
-          <div class="blog-meta">
-            <span class="blog-tag">documentation</span>
-            <span class="blog-tag">resources</span>
-          </div>
-        </a>
-
-        <a href="blogs/building-a-learning-habit.md" class="blog-card">
-          <div class="blog-category">Personal Growth</div>
-          <h3 class="blog-title">Building a Learning Habit That Actually Sticks</h3>
-          <p class="blog-excerpt">How I built a consistent learning habit by treating it like a skill, not motivation</p>
-          <div class="blog-meta">
-            <span class="blog-tag">learning</span>
-            <span class="blog-tag">productivity</span>
-          </div>
-        </a>
-
-        <a href="blogs/data-pipeline-lessons.md" class="blog-card">
-          <div class="blog-category">Data Engineering</div>
-          <h3 class="blog-title">What They Don't Tell You About Building Data Pipelines</h3>
-          <p class="blog-excerpt">The gap between tutorial pipelines and production systems</p>
-          <div class="blog-meta">
-            <span class="blog-tag">data-eng</span>
-            <span class="blog-tag">lessons</span>
-          </div>
-        </a>
-
-        <a href="blogs/technical-books-that-changed-me.md" class="blog-card">
-          <div class="blog-category">Books & Recommendations</div>
-          <h3 class="blog-title">Technical Books That Actually Changed How I Code</h3>
-          <p class="blog-excerpt">Not the hype books — the ones that rewired my problem-solving approach</p>
-          <div class="blog-meta">
-            <span class="blog-tag">books</span>
-            <span class="blog-tag">recommendations</span>
-          </div>
-        </a>
-
-        <a href="blogs/junior-to-senior.md" class="blog-card">
-          <div class="blog-category">Career & Growth</div>
-          <h3 class="blog-title">From Junior to Senior: The Skills They Never Teach</h3>
-          <p class="blog-excerpt">Technical skills get you hired. These other skills get you to senior</p>
-          <div class="blog-meta">
-            <span class="blog-tag">career</span>
-            <span class="blog-tag">growth</span>
-          </div>
-        </a>
+      <div class="blog-grid" id="resourcesBlogGrid">
+        <!-- Blogs loaded dynamically from resources/blogs/ -->
       </div>
     </section>
 
@@ -623,6 +690,104 @@
       </div>
     </section>
   </div>
+
+  <div class="blog-modal" id="blogModal">
+    <div class="blog-content" id="blogContent"></div>
+  </div>
+
+  <script>
+    const resourceBlogFiles = [
+      'resources/blogs/sql-window-functions.md',
+      'resources/blogs/interview-prep-guide.md',
+      'resources/blogs/dbt-project-structure.md',
+      'resources/blogs/data-stack-comparison.md'
+    ];
+
+    async function loadBlogList() {
+      const grid = document.getElementById('resourcesBlogGrid');
+      const blogData = [];
+
+      for (const file of resourceBlogFiles) {
+        try {
+          const response = await fetch(file);
+          const markdown = await response.text();
+          const frontmatter = extractFrontmatter(markdown);
+          blogData.push({ file, ...frontmatter });
+        } catch (error) {
+          console.error(`Failed to load ${file}:`, error);
+        }
+      }
+
+      blogData.forEach(blog => {
+        const card = document.createElement('button');
+        card.className = 'blog-card';
+        card.style.background = 'none';
+        card.style.border = 'none';
+        card.style.padding = '24px';
+        card.style.cursor = 'pointer';
+        card.style.borderRadius = '16px';
+        card.style.background = 'linear-gradient(135deg, rgba(30, 58, 138, 0.04), rgba(14, 165, 233, 0.04))';
+        card.style.borderStyle = '1px solid rgba(15, 23, 42, 0.06)';
+        card.onclick = () => loadBlog(blog.file);
+
+        card.innerHTML = `
+          <div class="blog-category">${blog.category || 'Resources'}</div>
+          <h3 class="blog-title">${blog.title}</h3>
+          <p class="blog-excerpt">${blog.excerpt}</p>
+          <div class="blog-meta">
+            <span class="blog-tag">Read post</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function extractFrontmatter(markdown) {
+      const lines = markdown.split('\n');
+      const data = {};
+      let inFrontmatter = false;
+      let endIndex = 0;
+
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].trim() === '---') {
+          if (!inFrontmatter) {
+            inFrontmatter = true;
+          } else {
+            endIndex = i;
+            break;
+          }
+        } else if (inFrontmatter && lines[i].includes(':')) {
+          const [key, value] = lines[i].split(':').map(s => s.trim());
+          data[key] = value.replace(/^["']|["']$/g, '');
+        }
+      }
+
+      return data;
+    }
+
+    async function loadBlog(file) {
+      const response = await fetch(file);
+      const markdown = await response.text();
+      const content = markdown.split('---').slice(2).join('---').trim();
+      const html = marked.parse(content);
+
+      document.getElementById('blogContent').innerHTML = `
+        ${html}
+        <button class="blog-close" onclick="closeBlog()">← Back to Posts</button>
+      `;
+      document.getElementById('blogModal').classList.add('active');
+    }
+
+    function closeBlog() {
+      document.getElementById('blogModal').classList.remove('active');
+    }
+
+    document.getElementById('blogModal').addEventListener('click', (e) => {
+      if (e.target.id === 'blogModal') closeBlog();
+    });
+
+    loadBlogList();
+  </script>
 
   <script>
     document.getElementById('emailForm').addEventListener('submit', async (e) => {
