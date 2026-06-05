@@ -104,6 +104,12 @@
     content.querySelector(".blog-close").addEventListener("click", closeBlog);
   }
 
+  async function openPostPath(path) {
+    const markdown = await readMarkdown(path);
+    const parsed = parseFrontmatter(markdown);
+    openBlog({ path, content: parsed.content, ...parsed.data });
+  }
+
   function closeBlog() {
     const modal = document.getElementById("blogModal");
     if (modal) modal.classList.remove("active");
@@ -170,6 +176,7 @@
       grid.addEventListener("click", (event) => {
         const row = event.target.closest("[data-post-index]");
         if (row) {
+          event.preventDefault();
           const postIndex = (currentPage - 1) * pageSize + Number(row.dataset.postIndex);
           openBlog(posts[postIndex]);
         }
@@ -195,6 +202,11 @@
   document.addEventListener("DOMContentLoaded", () => {
     installThemeControl();
     document.querySelectorAll("[data-blog-manifest]").forEach(installBlogList);
+
+    const postPath = new URLSearchParams(window.location.search).get("post");
+    if (postPath) {
+      openPostPath(postPath).catch((error) => console.error(error));
+    }
 
     const modal = document.getElementById("blogModal");
     if (modal) {

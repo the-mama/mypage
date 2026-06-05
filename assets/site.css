@@ -14,26 +14,26 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="classic"]) {
-    --bg: #111418;
-    --surface: #181d22;
-    --ink: #f3f5f4;
-    --muted: #aeb7bd;
-    --line: #303840;
-    --accent: #73d1c7;
-    --accent-soft: #173330;
-    --shadow: rgba(0, 0, 0, 0.28);
+    --bg: #05070a;
+    --surface: #101820;
+    --ink: #ffffff;
+    --muted: #d4dee7;
+    --line: #3a4a56;
+    --accent: #7ff3e6;
+    --accent-soft: #163f3b;
+    --shadow: rgba(0, 0, 0, 0.42);
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #111418;
-  --surface: #181d22;
-  --ink: #f3f5f4;
-  --muted: #aeb7bd;
-  --line: #303840;
-  --accent: #73d1c7;
-  --accent-soft: #173330;
-  --shadow: rgba(0, 0, 0, 0.28);
+  --bg: #05070a;
+  --surface: #101820;
+  --ink: #ffffff;
+  --muted: #d4dee7;
+  --line: #3a4a56;
+  --accent: #7ff3e6;
+  --accent-soft: #163f3b;
+  --shadow: rgba(0, 0, 0, 0.42);
 }
 
 :root[data-theme="classic"] {
@@ -122,7 +122,7 @@ nav a.active {
 
 .theme-control button[aria-pressed="true"],
 .pagination button[aria-current="page"] {
-  color: var(--surface);
+  color: var(--bg);
   background: var(--accent);
 }
 
@@ -335,7 +335,7 @@ nav a.active {
   border: 0;
   border-radius: 8px;
   padding: 10px 14px;
-  color: var(--surface);
+  color: var(--bg);
   background: var(--accent);
   cursor: pointer;
   font-weight: 800;
