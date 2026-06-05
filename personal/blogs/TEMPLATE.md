@@ -4,12 +4,20 @@ date: "2026-06-05"
 category: "Personal"
 author: "The Mahesh"
 excerpt: "A brief summary of your personal experience, thought, or journey"
-image: "https://images.unsplash.com/photo-placeholder"
+image: "personal/blogs/images/your-image.jpg"
 ---
+
+<!--
+Publishing:
+1. Copy this file, rename it with a URL-friendly slug, and keep it in personal/blogs/.
+2. Add the new file path to personal/blogs/manifest.json.
+3. Push to GitHub. You do not need to create an HTML page.
+4. Add images with normal Markdown syntax. Local images can live in personal/blogs/images/.
+-->
 
 # Your Personal Story
 
-![Hero Image](https://images.unsplash.com/photo-placeholder)
+![Hero Image](personal/blogs/images/your-image.jpg)
 
 ## The Setting
 

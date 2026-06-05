@@ -6,7 +6,16 @@ author: "The Mahesh"
 excerpt: "What this resource is and why it's useful"
 type: "template"
 link: "https://link-to-resource"
+image: "resources/blogs/images/your-image.jpg"
 ---
+
+<!--
+Publishing:
+1. Copy this file, rename it with a URL-friendly slug, and keep it in resources/blogs/.
+2. Add the new file path to resources/blogs/manifest.json.
+3. Push to GitHub. You do not need to create an HTML page.
+4. Add images with normal Markdown syntax. Local images can live in resources/blogs/images/.
+-->
 
 # Resource Title
 

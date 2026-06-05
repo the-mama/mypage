@@ -1,0 +1,9 @@
+{
+  "category": "Resources",
+  "posts": [
+    "resources/blogs/sql-window-functions.md",
+    "resources/blogs/interview-prep-guide.md",
+    "resources/blogs/dbt-project-structure.md",
+    "resources/blogs/data-stack-comparison.md"
+  ]
+}

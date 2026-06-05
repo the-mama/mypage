@@ -523,6 +523,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
   <nav>
@@ -662,7 +663,7 @@
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card" data-blog-manifest="resources/blogs/manifest.json" data-blog-target="resourcesBlogGrid">
       <h2>Learning Resources & Guides</h2>
       <div class="blog-grid" id="resourcesBlogGrid">
         <!-- Blogs loaded dynamically from resources/blogs/ -->
@@ -695,99 +696,7 @@
     <div class="blog-content" id="blogContent"></div>
   </div>
 
-  <script>
-    const resourceBlogFiles = [
-      'resources/blogs/sql-window-functions.md',
-      'resources/blogs/interview-prep-guide.md',
-      'resources/blogs/dbt-project-structure.md',
-      'resources/blogs/data-stack-comparison.md'
-    ];
-
-    async function loadBlogList() {
-      const grid = document.getElementById('resourcesBlogGrid');
-      const blogData = [];
-
-      for (const file of resourceBlogFiles) {
-        try {
-          const response = await fetch(file);
-          const markdown = await response.text();
-          const frontmatter = extractFrontmatter(markdown);
-          blogData.push({ file, ...frontmatter });
-        } catch (error) {
-          console.error(`Failed to load ${file}:`, error);
-        }
-      }
-
-      blogData.forEach(blog => {
-        const card = document.createElement('button');
-        card.className = 'blog-card';
-        card.style.background = 'none';
-        card.style.border = 'none';
-        card.style.padding = '24px';
-        card.style.cursor = 'pointer';
-        card.style.borderRadius = '16px';
-        card.style.background = 'linear-gradient(135deg, rgba(30, 58, 138, 0.04), rgba(14, 165, 233, 0.04))';
-        card.style.borderStyle = '1px solid rgba(15, 23, 42, 0.06)';
-        card.onclick = () => loadBlog(blog.file);
-
-        card.innerHTML = `
-          <div class="blog-category">${blog.category || 'Resources'}</div>
-          <h3 class="blog-title">${blog.title}</h3>
-          <p class="blog-excerpt">${blog.excerpt}</p>
-          <div class="blog-meta">
-            <span class="blog-tag">Read post</span>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function extractFrontmatter(markdown) {
-      const lines = markdown.split('\n');
-      const data = {};
-      let inFrontmatter = false;
-      let endIndex = 0;
-
-      for (let i = 0; i < lines.length; i++) {
-        if (lines[i].trim() === '---') {
-          if (!inFrontmatter) {
-            inFrontmatter = true;
-          } else {
-            endIndex = i;
-            break;
-          }
-        } else if (inFrontmatter && lines[i].includes(':')) {
-          const [key, value] = lines[i].split(':').map(s => s.trim());
-          data[key] = value.replace(/^["']|["']$/g, '');
-        }
-      }
-
-      return data;
-    }
-
-    async function loadBlog(file) {
-      const response = await fetch(file);
-      const markdown = await response.text();
-      const content = markdown.split('---').slice(2).join('---').trim();
-      const html = marked.parse(content);
-
-      document.getElementById('blogContent').innerHTML = `
-        ${html}
-        <button class="blog-close" onclick="closeBlog()">← Back to Posts</button>
-      `;
-      document.getElementById('blogModal').classList.add('active');
-    }
-
-    function closeBlog() {
-      document.getElementById('blogModal').classList.remove('active');
-    }
-
-    document.getElementById('blogModal').addEventListener('click', (e) => {
-      if (e.target.id === 'blogModal') closeBlog();
-    });
-
-    loadBlogList();
-  </script>
+  <script src="assets/site.js"></script>
 
   <script>
     document.getElementById('emailForm').addEventListener('submit', async (e) => {

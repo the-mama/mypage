@@ -5,15 +5,23 @@ category: "Books"
 author: "The Mahesh"
 author_book: "Author Name"
 excerpt: "Why this book matters and what you'll learn"
-image: "https://images.unsplash.com/photo-placeholder"
+image: "books/blogs/images/your-image.jpg"
 rating: 5
 ---
+
+<!--
+Publishing:
+1. Copy this file, rename it with a URL-friendly slug, and keep it in books/blogs/.
+2. Add the new file path to books/blogs/manifest.json.
+3. Push to GitHub. You do not need to create an HTML page.
+4. Add images with normal Markdown syntax. Local images can live in books/blogs/images/.
+-->
 
 # Book Title
 
 **By Author Name**
 
-![Book Cover](https://images.unsplash.com/photo-placeholder)
+![Book Cover](books/blogs/images/your-image.jpg)
 
 ## What It's About
 
