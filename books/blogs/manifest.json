@@ -1,9 +1,0 @@
-{
-  "category": "Books",
-  "posts": [
-    "books/blogs/designing-data-intensive-applications.md",
-    "books/blogs/pragmatic-programmer.md",
-    "books/blogs/release-it.md",
-    "books/blogs/clean-code.md"
-  ]
-}
