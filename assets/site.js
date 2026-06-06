@@ -1,32 +1,6 @@
 (function () {
   const pageSize = 5;
 
-  function formatNavTime(timeZone) {
-    return new Intl.DateTimeFormat("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone
-    }).format(new Date());
-  }
-
-  function installNavTimes() {
-    const clocks = document.querySelector(".nav-times");
-    if (!clocks) return;
-
-    const uk = clocks.querySelector("[data-time-zone='Europe/London']");
-    const india = clocks.querySelector("[data-time-zone='Asia/Kolkata']");
-    if (!uk || !india) return;
-
-    const update = () => {
-      uk.textContent = formatNavTime("Europe/London");
-      india.textContent = formatNavTime("Asia/Kolkata");
-    };
-
-    update();
-    window.setInterval(update, 60000);
-  }
-
   function installNavigation() {
     const toggle = document.querySelector(".menu-toggle");
     const close = document.querySelector(".menu-close");
@@ -34,23 +8,23 @@
     const drawer = document.querySelector(".nav-drawer");
     if (!toggle || !close || !backdrop || !drawer) return;
 
-    const setOpen = (open) => {
+    const setOpen = (open, restoreFocus = false) => {
       document.body.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       drawer.setAttribute("aria-hidden", String(!open));
       if (open) close.focus();
+      if (!open && restoreFocus) toggle.focus();
     };
 
     toggle.addEventListener("click", () => setOpen(true));
-    close.addEventListener("click", () => setOpen(false));
-    backdrop.addEventListener("click", () => setOpen(false));
+    close.addEventListener("click", () => setOpen(false, true));
+    backdrop.addEventListener("click", () => setOpen(false, true));
     drawer.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => setOpen(false));
     });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
-        setOpen(false);
-        toggle.focus();
+        setOpen(false, true);
       }
     });
   }
@@ -140,6 +114,7 @@
     const targetId = section.dataset.blogTarget;
     const manifestPath = section.dataset.blogManifest;
     const grid = document.getElementById(targetId);
+    const search = document.querySelector(`[data-blog-search="${targetId}"]`);
     if (!targetId || !manifestPath || !grid) return;
 
     try {
@@ -153,13 +128,40 @@
       );
 
       let currentPage = 1;
-      const totalPages = Math.max(1, Math.ceil(posts.length / pageSize));
       posts.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
       grid.classList.add("post-list");
 
+      function matchingPosts() {
+        const query = search ? search.value.trim().toLocaleLowerCase() : "";
+        if (!query) return posts;
+        return posts.filter((post) => {
+          const searchable = [
+            post.title,
+            post.excerpt,
+            post.category,
+            post.tags,
+            post.author,
+            post.content
+          ]
+            .join(" ")
+            .toLocaleLowerCase();
+          return searchable.includes(query);
+        });
+      }
+
       function renderPage() {
+        const filteredPosts = matchingPosts();
+        const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
+        currentPage = Math.min(currentPage, totalPages);
         const start = (currentPage - 1) * pageSize;
-        const pagePosts = posts.slice(start, start + pageSize);
+        const pagePosts = filteredPosts.slice(start, start + pageSize);
+        section.querySelector(".pagination")?.remove();
+
+        if (!pagePosts.length) {
+          grid.innerHTML = `<p class="post-list-empty">No posts match that search.</p>`;
+          return;
+        }
+
         grid.innerHTML = pagePosts
           .map((post, index) => {
             const tags = tagsFor(post);
@@ -168,7 +170,7 @@
               .map((tag) => `<span class="post-tag">${escapeHtml(tag)}</span>`)
               .join("");
             return `
-            <button class="post-row" type="button" data-post-index="${index}">
+            <button class="post-row" type="button" data-post-path="${escapeHtml(post.path)}">
               <time class="post-date" datetime="${escapeHtml(post.date)}">${escapeHtml(formatDate(post.date))}</time>
               <span>
                 <span class="blog-category">${escapeHtml(post.category || manifest.category || "Blog")}</span>
@@ -195,11 +197,11 @@
       }
 
       grid.addEventListener("click", (event) => {
-        const row = event.target.closest("[data-post-index]");
+        const row = event.target.closest("[data-post-path]");
         if (row) {
           event.preventDefault();
-          const postIndex = (currentPage - 1) * pageSize + Number(row.dataset.postIndex);
-          openBlog(posts[postIndex]);
+          const post = posts.find((entry) => entry.path === row.dataset.postPath);
+          if (post) openBlog(post);
         }
       });
 
@@ -207,14 +209,20 @@
         const button = event.target.closest("[data-page]");
         if (!button) return;
         currentPage = Number(button.dataset.page);
-        section.querySelector(".pagination")?.remove();
         renderPage();
       });
 
+      if (search) {
+        search.addEventListener("input", () => {
+          currentPage = 1;
+          renderPage();
+        });
+      }
+
       renderPage();
     } catch (error) {
-      if (!grid.children.length) {
-        grid.innerHTML = `<p class="post-list-empty">Posts are available after the site finishes deploying.</p>`;
+      if (!grid.querySelector(".post-row")) {
+        grid.innerHTML = `<p class="post-list-empty">Posts could not be loaded. Refresh the page or try again shortly.</p>`;
       }
       console.error(error);
     }
@@ -222,7 +230,6 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     installNavigation();
-    installNavTimes();
     document.querySelectorAll("[data-blog-manifest]").forEach(installBlogList);
 
     const postPath = new URLSearchParams(window.location.search).get("post");

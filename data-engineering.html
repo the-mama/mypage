@@ -3,84 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Data Engineering — The Mahesh</title>
+  <meta name="description" content="Practical notes on Azure data engineering, pipelines, data modeling, quality, and performance." />
+  <title>Data Engineering Blog | Mahesh</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-  <nav class="site-header" aria-label="Site navigation">
-    <div class="header-inner">
-      <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="sr-only">Open navigation</span></button>
-      <a class="site-brand" href="index.html">MAHESH</a>
-      <div class="nav-times" aria-label="Current local times"><span class="nav-time">UK <strong data-time-zone="Europe/London">--:--</strong></span><span class="nav-time" aria-label="India time">IN <strong data-time-zone="Asia/Kolkata">--:--</strong></span></div>
+  <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+    <span class="ellipsis-icon" aria-hidden="true"></span>
+    <span class="sr-only">Open navigation</span>
+  </button>
+  <div class="nav-backdrop" aria-hidden="true"></div>
+  <aside class="nav-drawer" id="site-navigation" aria-hidden="true">
+    <div class="drawer-head">
+      <a class="wordmark drawer-brand" href="index.html"><span class="wordmark-ma">MA</span>HESH</a>
+      <button class="menu-close" type="button"><span class="sr-only">Close navigation</span></button>
     </div>
-    <div class="nav-backdrop" aria-hidden="true"></div>
-    <aside class="nav-drawer" id="site-navigation" aria-hidden="true">
-      <div class="drawer-head"><a class="drawer-brand" href="index.html">MAHESH</a><button class="menu-close" type="button"><span class="sr-only">Close navigation</span></button></div>
-      <p class="drawer-intro">Experienced Data Engineer building reliable, enterprise-scale data platforms and analytics systems.</p>
-      <div class="drawer-links">
-        <a href="index.html"><span class="drawer-index">01</span>Home</a><a href="index.html#about"><span class="drawer-index">02</span>About</a><a href="index.html#experience"><span class="drawer-index">03</span>Experience</a><a href="index.html#projects"><span class="drawer-index">04</span>Projects</a><a class="active" href="data-engineering.html"><span class="drawer-index">05</span>Blog</a><a href="index.html#architecture-gallery"><span class="drawer-index">06</span>Architecture Gallery</a><a href="index.html#certifications"><span class="drawer-index">07</span>Certifications</a><a href="index.html#contact"><span class="drawer-index">08</span>Contact</a>
-      </div>
-      <p class="drawer-contact">London, UK<br><a href="mailto:connect@themahesh.org">connect@themahesh.org</a></p>
-    </aside>
-  </nav>
+    <p class="drawer-intro">Experienced Data Engineer building reliable, enterprise-scale data platforms and analytics systems.</p>
+    <nav class="drawer-links" aria-label="Site navigation">
+      <a href="index.html"><span class="drawer-index">01</span>Home</a>
+      <a class="active" href="data-engineering.html"><span class="drawer-index">02</span>Blog</a>
+      <a href="personal.html"><span class="drawer-index">03</span>Personal Blog</a>
+    </nav>
+    <p class="drawer-tools-title">Coming resources</p>
+    <div class="drawer-tools">
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Top 50 SQL Questions</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Resume Template</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Spark 50</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">ADF 50</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Interview 50</a>
+    </div>
+    <blockquote class="drawer-quote">“Arise, awake, and stop not till the goal is reached.”<cite>Swami Vivekananda</cite></blockquote>
+  </aside>
 
   <main class="page">
     <header class="page-header">
+      <a class="wordmark" href="index.html" aria-label="Mahesh, home"><span class="wordmark-ma">MA</span>HESH</a>
       <h1>Data Engineering</h1>
-      <p>Hard-won notes from building pipelines, shaping data models, improving quality, and tuning platforms that have to run reliably.</p>
+      <p>Practical notes from building reliable pipelines, data models, lakehouse platforms, and analytics systems in production.</p>
     </header>
+
+    <div class="post-search">
+      <label class="sr-only" for="data-search">Search data engineering posts</label>
+      <input id="data-search" type="search" placeholder="Search posts, topics, or tools…" autocomplete="off" data-blog-search="dataEngineeringBlogGrid" />
+    </div>
 
     <section class="post-section" data-blog-manifest="data-engineering/blogs/manifest.json" data-blog-target="dataEngineeringBlogGrid">
       <div class="post-list" id="dataEngineeringBlogGrid">
         <a class="post-row" href="data-engineering.html?post=data-engineering/blogs/dbt-medallion-architecture.md">
           <time class="post-date" datetime="2026-06-05">Jun 5, 2026</time>
-          <span>
-            <span class="blog-category">Architecture</span>
-            <span class="post-title">dbt Medallion Architecture</span>
-            <span class="post-excerpt">Building scalable, maintainable data warehouses with dbt's Bronze, Silver, and Gold layers.</span>
-            <span class="post-meta"><span class="post-tag">dbt</span><span class="post-tag">Databricks</span><span class="post-tag">Data Modeling</span></span>
-          </span>
+          <span><span class="blog-category">Architecture</span><span class="post-title">dbt Medallion Architecture</span><span class="post-excerpt">Building scalable, maintainable data warehouses with Bronze, Silver, and Gold layers.</span></span>
         </a>
         <a class="post-row" href="data-engineering.html?post=data-engineering/blogs/data-quality-monitoring.md">
           <time class="post-date" datetime="2026-06-04">Jun 4, 2026</time>
-          <span>
-            <span class="blog-category">Quality</span>
-            <span class="post-title">Data Quality Monitoring at Scale</span>
-            <span class="post-excerpt">A practical approach for catching data issues before they reach users.</span>
-            <span class="post-meta"><span class="post-tag">Data Quality</span><span class="post-tag">Monitoring</span><span class="post-tag">Great Expectations</span></span>
-          </span>
+          <span><span class="blog-category">Quality</span><span class="post-title">Data Quality Monitoring at Scale</span><span class="post-excerpt">A practical approach for catching data issues before they reach users.</span></span>
         </a>
         <a class="post-row" href="data-engineering.html?post=data-engineering/blogs/spark-performance-tuning.md">
           <time class="post-date" datetime="2026-06-03">Jun 3, 2026</time>
-          <span>
-            <span class="blog-category">Performance</span>
-            <span class="post-title">Spark Job Performance Tuning</span>
-            <span class="post-excerpt">How to diagnose slow Spark jobs and fix the usual production bottlenecks.</span>
-            <span class="post-meta"><span class="post-tag">Spark</span><span class="post-tag">Databricks</span><span class="post-tag">Optimization</span></span>
-          </span>
+          <span><span class="blog-category">Performance</span><span class="post-title">Spark Job Performance Tuning</span><span class="post-excerpt">How to diagnose slow Spark jobs and fix the usual production bottlenecks.</span></span>
         </a>
         <a class="post-row" href="data-engineering.html?post=data-engineering/blogs/lakehouse-fabric-vs-databricks.md">
           <time class="post-date" datetime="2026-06-02">Jun 2, 2026</time>
-          <span>
-            <span class="blog-category">Architecture</span>
-            <span class="post-title">Lakehouse Wars: Azure Fabric vs Databricks</span>
-            <span class="post-excerpt">A practical comparison for teams choosing a modern data platform.</span>
-            <span class="post-meta"><span class="post-tag">Azure Fabric</span><span class="post-tag">Databricks</span><span class="post-tag">Lakehouse</span></span>
-          </span>
+          <span><span class="blog-category">Architecture</span><span class="post-title">Lakehouse Wars: Azure Fabric vs Databricks</span><span class="post-excerpt">A practical comparison for teams choosing a modern data platform.</span></span>
         </a>
         <a class="post-row" href="data-engineering.html?post=data-engineering/blogs/adf-incremental-load.md">
           <time class="post-date" datetime="2026-06-01">Jun 1, 2026</time>
-          <span>
-            <span class="blog-category">ETL/ELT</span>
-            <span class="post-title">ADF Incremental Load Pattern</span>
-            <span class="post-excerpt">Production-grade incremental loading with a watermark strategy.</span>
-            <span class="post-meta"><span class="post-tag">Azure Data Factory</span><span class="post-tag">ETL</span><span class="post-tag">Production</span></span>
-          </span>
+          <span><span class="blog-category">ETL/ELT</span><span class="post-title">ADF Incremental Load Pattern</span><span class="post-excerpt">Production-grade incremental loading with a watermark strategy.</span></span>
         </a>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Notes worth keeping.</strong>
+        <p>Occasional writing on data engineering, technology, and life.</p>
+      </div>
+      <form class="subscribe-form" action="https://formspree.io/f/maqznlbb" method="POST">
+        <label class="sr-only" for="data-email">Email address</label>
+        <input id="data-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <a class="github-link" href="https://github.com/the-mama" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </footer>
 
   <div class="blog-modal" id="blogModal">
     <article class="blog-content" id="blogContent"></article>

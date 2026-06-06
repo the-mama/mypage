@@ -1,10 +1,10 @@
 {
   "category": "Personal",
   "posts": [
+    "personal/blogs/ai-agents-big-tech-shift.md",
+    "personal/blogs/telugu-politics-beyond-headlines.md",
+    "personal/blogs/ai-yugam-telugu.md",
     "personal/blogs/how-to-build-reading-habit-telugu.md",
-    "personal/blogs/success-isnt-speed.md",
-    "personal/blogs/meditation-problem-solving.md",
-    "personal/blogs/failing-project-lessons.md",
-    "personal/blogs/cold-shower-discipline.md"
+    "personal/blogs/meditation-problem-solving.md"
   ]
 }

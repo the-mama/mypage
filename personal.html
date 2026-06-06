@@ -3,84 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Personal — The Mahesh</title>
+  <meta name="description" content="Mahesh's Telugu and English writing on meditation, reading, politics, technology, and AI." />
+  <title>Personal Blog | Mahesh</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-  <nav class="site-header" aria-label="Site navigation">
-    <div class="header-inner">
-      <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="sr-only">Open navigation</span></button>
-      <a class="site-brand" href="index.html">MAHESH</a>
-      <div class="nav-times" aria-label="Current local times"><span class="nav-time">UK <strong data-time-zone="Europe/London">--:--</strong></span><span class="nav-time" aria-label="India time">IN <strong data-time-zone="Asia/Kolkata">--:--</strong></span></div>
+  <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+    <span class="ellipsis-icon" aria-hidden="true"></span>
+    <span class="sr-only">Open navigation</span>
+  </button>
+  <div class="nav-backdrop" aria-hidden="true"></div>
+  <aside class="nav-drawer" id="site-navigation" aria-hidden="true">
+    <div class="drawer-head">
+      <a class="wordmark drawer-brand" href="index.html"><span class="wordmark-ma">MA</span>HESH</a>
+      <button class="menu-close" type="button"><span class="sr-only">Close navigation</span></button>
     </div>
-    <div class="nav-backdrop" aria-hidden="true"></div>
-    <aside class="nav-drawer" id="site-navigation" aria-hidden="true">
-      <div class="drawer-head"><a class="drawer-brand" href="index.html">MAHESH</a><button class="menu-close" type="button"><span class="sr-only">Close navigation</span></button></div>
-      <p class="drawer-intro">Experienced Data Engineer building reliable, enterprise-scale data platforms and analytics systems.</p>
-      <div class="drawer-links">
-        <a href="index.html"><span class="drawer-index">01</span>Home</a><a href="index.html#about"><span class="drawer-index">02</span>About</a><a href="index.html#experience"><span class="drawer-index">03</span>Experience</a><a href="index.html#projects"><span class="drawer-index">04</span>Projects</a><a class="active" href="data-engineering.html"><span class="drawer-index">05</span>Blog</a><a href="index.html#architecture-gallery"><span class="drawer-index">06</span>Architecture Gallery</a><a href="index.html#certifications"><span class="drawer-index">07</span>Certifications</a><a href="index.html#contact"><span class="drawer-index">08</span>Contact</a>
-      </div>
-      <p class="drawer-contact">London, UK<br><a href="mailto:connect@themahesh.org">connect@themahesh.org</a></p>
-    </aside>
-  </nav>
+    <p class="drawer-intro">Experienced Data Engineer building reliable, enterprise-scale data platforms and analytics systems.</p>
+    <nav class="drawer-links" aria-label="Site navigation">
+      <a href="index.html"><span class="drawer-index">01</span>Home</a>
+      <a href="data-engineering.html"><span class="drawer-index">02</span>Blog</a>
+      <a class="active" href="personal.html"><span class="drawer-index">03</span>Personal Blog</a>
+    </nav>
+    <p class="drawer-tools-title">Coming resources</p>
+    <div class="drawer-tools">
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Top 50 SQL Questions</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Resume Template</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Spark 50</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">ADF 50</a>
+      <a class="drawer-tool" href="https://drive.google.com/" target="_blank" rel="noopener">Interview 50</a>
+    </div>
+    <blockquote class="drawer-quote">“Arise, awake, and stop not till the goal is reached.”<cite>Swami Vivekananda</cite></blockquote>
+  </aside>
 
   <main class="page">
     <header class="page-header">
-      <h1>Personal</h1>
-      <p>Thoughts on discipline, reading, meditation, failure, and the small habits that quietly change how I live and work.</p>
+      <a class="wordmark" href="index.html" aria-label="Mahesh, home"><span class="wordmark-ma">MA</span>HESH</a>
+      <h1>Personal Blog</h1>
+      <p>Telugu and English reflections on reading, meditation, public life, technology, and the changes shaping how we think and work.</p>
     </header>
+
+    <div class="post-search">
+      <label class="sr-only" for="personal-search">Search personal posts</label>
+      <input id="personal-search" type="search" placeholder="Search Telugu and English posts…" autocomplete="off" data-blog-search="personalBlogGrid" />
+    </div>
 
     <section class="post-section" data-blog-manifest="personal/blogs/manifest.json" data-blog-target="personalBlogGrid">
       <div class="post-list" id="personalBlogGrid">
+        <a class="post-row" href="personal.html?post=personal/blogs/ai-agents-big-tech-shift.md">
+          <time class="post-date" datetime="2026-06-06">Jun 6, 2026</time>
+          <span><span class="blog-category">Technology</span><span class="post-title">From Chatbots to Agents: The Big Tech Shift That Matters</span><span class="post-excerpt">Software is moving from answering questions to completing bounded work.</span></span>
+        </a>
+        <a class="post-row" href="personal.html?post=personal/blogs/telugu-politics-beyond-headlines.md">
+          <time class="post-date" datetime="2026-06-05">Jun 5, 2026</time>
+          <span><span class="blog-category">తెలుగు విశ్లేషణ</span><span class="post-title">తెలుగు రాజకీయాలను శీర్షికలకు మించి ఎలా అర్థం చేసుకోవాలి?</span><span class="post-excerpt">బడ్జెట్, అమలు, స్థానిక ఫలితాలు మరియు ప్రజా సంస్థలను పరిశీలించే ఒక తటస్థ పద్ధతి.</span></span>
+        </a>
+        <a class="post-row" href="personal.html?post=personal/blogs/ai-yugam-telugu.md">
+          <time class="post-date" datetime="2026-06-04">Jun 4, 2026</time>
+          <span><span class="blog-category">తెలుగు టెక్నాలజీ</span><span class="post-title">AI యుగంలో మన పని ఎలా మారుతోంది?</span><span class="post-excerpt">AI ప్రతి ఉద్యోగంలోని పనులను విడదీసి కొత్త నైపుణ్యాలను ఎలా కోరుతోందో ఒక విశ్లేషణ.</span></span>
+        </a>
         <a class="post-row" href="personal.html?post=personal/blogs/how-to-build-reading-habit-telugu.md">
           <time class="post-date" datetime="2026-06-05">Jun 5, 2026</time>
-          <span>
-            <span class="blog-category">Personal</span>
-            <span class="post-title">పుస్తకాలు చదవడం ఎలా అలవాటు చేసుకోవాలి</span>
-            <span class="post-excerpt">రోజూ కొంచెం చదవడం ద్వారా పుస్తకాలు జీవితంలో భాగం చేసుకోవడానికి ఒక సులభమైన పద్ధతి.</span>
-            <span class="post-meta"><span class="post-tag">Telugu</span><span class="post-tag">Reading</span><span class="post-tag">Habit</span></span>
-          </span>
-        </a>
-        <a class="post-row" href="personal.html?post=personal/blogs/success-isnt-speed.md">
-          <time class="post-date" datetime="2026-06-05">Jun 5, 2026</time>
-          <span>
-            <span class="blog-category">Personal</span>
-            <span class="post-title">The Day I Realized Success Isn't About Speed</span>
-            <span class="post-excerpt">How slowing down and focusing on depth changed everything.</span>
-            <span class="post-meta"><span class="post-tag">Reflection</span></span>
-          </span>
+          <span><span class="blog-category">Personal</span><span class="post-title">పుస్తకాలు చదవడం ఎలా అలవాటు చేసుకోవాలి</span><span class="post-excerpt">రోజూ కొంచెం చదవడం ద్వారా పుస్తకాలు జీవితంలో భాగం చేసుకునే సులభమైన పద్ధతి.</span></span>
         </a>
         <a class="post-row" href="personal.html?post=personal/blogs/meditation-problem-solving.md">
           <time class="post-date" datetime="2026-06-04">Jun 4, 2026</time>
-          <span>
-            <span class="blog-category">Personal</span>
-            <span class="post-title">Meditation Changed How I Solve Problems</span>
-            <span class="post-excerpt">The unexpected connection between stillness and clarity.</span>
-            <span class="post-meta"><span class="post-tag">Meditation</span></span>
-          </span>
-        </a>
-        <a class="post-row" href="personal.html?post=personal/blogs/failing-project-lessons.md">
-          <time class="post-date" datetime="2026-06-03">Jun 3, 2026</time>
-          <span>
-            <span class="blog-category">Personal</span>
-            <span class="post-title">What I Learned From Failing a Project</span>
-            <span class="post-excerpt">The project that taught me more than any success.</span>
-            <span class="post-meta"><span class="post-tag">Lessons</span></span>
-          </span>
-        </a>
-        <a class="post-row" href="personal.html?post=personal/blogs/cold-shower-discipline.md">
-          <time class="post-date" datetime="2026-06-02">Jun 2, 2026</time>
-          <span>
-            <span class="blog-category">Personal</span>
-            <span class="post-title">Why I Cold Shower Every Morning</span>
-            <span class="post-excerpt">Small discomfort, massive discipline.</span>
-            <span class="post-meta"><span class="post-tag">Discipline</span></span>
-          </span>
+          <span><span class="blog-category">Personal</span><span class="post-title">Meditation Changed How I Solve Problems</span><span class="post-excerpt">The unexpected connection between stillness and clarity.</span></span>
         </a>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Notes worth keeping.</strong>
+        <p>Occasional writing on data engineering, technology, and life.</p>
+      </div>
+      <form class="subscribe-form" action="https://formspree.io/f/maqznlbb" method="POST">
+        <label class="sr-only" for="personal-email">Email address</label>
+        <input id="personal-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <a class="github-link" href="https://github.com/the-mama" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </footer>
 
   <div class="blog-modal" id="blogModal">
     <article class="blog-content" id="blogContent"></article>
