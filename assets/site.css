@@ -46,6 +46,29 @@ nav {
   flex-wrap: wrap;
 }
 
+.nav-times {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.nav-time {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.nav-time strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
 nav a {
   color: var(--muted);
   text-decoration: none;
@@ -307,6 +330,12 @@ nav a.active {
 @media (max-width: 720px) {
   .nav-wrap {
     gap: 12px;
+  }
+
+  .nav-times {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
   }
 
   .post-row {

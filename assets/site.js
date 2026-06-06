@@ -1,6 +1,39 @@
 (function () {
   const pageSize = 5;
 
+  function formatNavTime(timeZone) {
+    return new Intl.DateTimeFormat("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone
+    }).format(new Date());
+  }
+
+  function installNavTimes() {
+    const navWrap = document.querySelector("nav .nav-wrap");
+    if (!navWrap || document.querySelector(".nav-times")) return;
+
+    const clocks = document.createElement("div");
+    clocks.className = "nav-times";
+    clocks.setAttribute("aria-label", "Current local times");
+    clocks.innerHTML = `
+      <span class="nav-time">UK <strong id="nav-uk-time">--:--</strong></span>
+      <span class="nav-time">India <strong id="nav-india-time">--:--</strong></span>
+    `;
+    navWrap.appendChild(clocks);
+
+    const uk = clocks.querySelector("#nav-uk-time");
+    const india = clocks.querySelector("#nav-india-time");
+    const update = () => {
+      uk.textContent = formatNavTime("Europe/London");
+      india.textContent = formatNavTime("Asia/Kolkata");
+    };
+
+    update();
+    window.setInterval(update, 60000);
+  }
+
   function parseFrontmatter(markdown) {
     if (!markdown.startsWith("---")) return { data: {}, content: markdown };
     const end = markdown.indexOf("\n---", 3);
@@ -167,6 +200,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    installNavTimes();
     document.querySelectorAll("[data-blog-manifest]").forEach(installBlogList);
 
     const postPath = new URLSearchParams(window.location.search).get("post");
