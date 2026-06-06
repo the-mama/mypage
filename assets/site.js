@@ -11,20 +11,13 @@
   }
 
   function installNavTimes() {
-    const navWrap = document.querySelector("nav .nav-wrap");
-    if (!navWrap || document.querySelector(".nav-times")) return;
+    const clocks = document.querySelector(".nav-times");
+    if (!clocks) return;
 
-    const clocks = document.createElement("div");
-    clocks.className = "nav-times";
-    clocks.setAttribute("aria-label", "Current local times");
-    clocks.innerHTML = `
-      <span class="nav-time">UK <strong id="nav-uk-time">--:--</strong></span>
-      <span class="nav-time">India <strong id="nav-india-time">--:--</strong></span>
-    `;
-    navWrap.appendChild(clocks);
+    const uk = clocks.querySelector("[data-time-zone='Europe/London']");
+    const india = clocks.querySelector("[data-time-zone='Asia/Kolkata']");
+    if (!uk || !india) return;
 
-    const uk = clocks.querySelector("#nav-uk-time");
-    const india = clocks.querySelector("#nav-india-time");
     const update = () => {
       uk.textContent = formatNavTime("Europe/London");
       india.textContent = formatNavTime("Asia/Kolkata");
@@ -32,6 +25,34 @@
 
     update();
     window.setInterval(update, 60000);
+  }
+
+  function installNavigation() {
+    const toggle = document.querySelector(".menu-toggle");
+    const close = document.querySelector(".menu-close");
+    const backdrop = document.querySelector(".nav-backdrop");
+    const drawer = document.querySelector(".nav-drawer");
+    if (!toggle || !close || !backdrop || !drawer) return;
+
+    const setOpen = (open) => {
+      document.body.classList.toggle("nav-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      drawer.setAttribute("aria-hidden", String(!open));
+      if (open) close.focus();
+    };
+
+    toggle.addEventListener("click", () => setOpen(true));
+    close.addEventListener("click", () => setOpen(false));
+    backdrop.addEventListener("click", () => setOpen(false));
+    drawer.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
   }
 
   function parseFrontmatter(markdown) {
@@ -200,6 +221,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    installNavigation();
     installNavTimes();
     document.querySelectorAll("[data-blog-manifest]").forEach(installBlogList);
 

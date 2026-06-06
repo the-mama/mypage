@@ -258,6 +258,106 @@
       font-size: 0.95rem;
     }
 
+    .portfolio-section {
+      padding: 34px 0;
+      border-top: 1px solid rgba(15, 23, 42, 0.1);
+    }
+
+    .portfolio-section:first-of-type {
+      border-top: 0;
+    }
+
+    .section-kicker {
+      margin-bottom: 8px;
+      color: var(--accent-2);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.15;
+    }
+
+    .section-lead {
+      max-width: 720px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .experience-list,
+    .architecture-list,
+    .credential-list {
+      display: grid;
+      margin-top: 24px;
+      border-top: 1px solid rgba(15, 23, 42, 0.1);
+    }
+
+    .experience-row,
+    .architecture-row,
+    .credential-row {
+      display: grid;
+      grid-template-columns: minmax(140px, 0.28fr) minmax(0, 1fr);
+      gap: 28px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    }
+
+    .row-label {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .row-content h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 1.18rem;
+    }
+
+    .row-content p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .architecture-row {
+      color: inherit;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .architecture-row:hover,
+    .architecture-row:focus-visible {
+      color: var(--accent);
+      outline: 0;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 24px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(15, 23, 42, 0.1);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    }
+
+    .contact-line a {
+      color: var(--accent);
+      font-family: var(--display);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      text-decoration: none;
+    }
+
     .footer-links a {
       text-decoration: none;
       background: none;
@@ -328,63 +428,6 @@
       }
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(246, 248, 251, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-      z-index: 1000;
-      padding: 0;
-      margin: -42px -56px 36px -56px;
-      padding: 16px 56px;
-    }
-
-    nav .nav-wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      font-size: 0.95rem;
-      text-decoration: none;
-      color: var(--ink);
-      position: relative;
-      font-weight: 500;
-      transition: color 200ms ease;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      height: 2px;
-      width: 0;
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
-      transition: width 200ms ease;
-    }
-
-    nav a:hover {
-      color: var(--accent-2);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    nav a.active {
-      color: var(--accent-2);
-    }
-
-    nav a.active::after {
-      width: 100%;
-    }
-
     @media (max-width: 520px) {
       h1 {
         font-size: clamp(2.8rem, 12vw, 4.2rem);
@@ -418,36 +461,56 @@
         display: none;
       }
 
-      nav .nav-wrap {
-        gap: 16px;
-        padding: 0;
-        font-size: 0.9rem;
+      .experience-row,
+      .architecture-row,
+      .credential-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
 
-      nav {
-        margin: -32px -32px 24px -32px;
-        padding: 12px 32px;
-      }
-
-      nav a {
-        font-size: 0.88rem;
+      .contact-line {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
-<body>
-  <nav>
-    <div class="nav-wrap">
-      <a href="index.html" class="active">Home</a>
-      <a href="data-engineering.html">Data Engineering</a>
-      <a href="personal.html">Personal</a>
-      <a href="books.html">Books</a>
-      <a href="resources.html">Resources</a>
+<body class="home-page">
+  <nav class="site-header" aria-label="Site navigation">
+    <div class="header-inner">
+      <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+      <a class="site-brand" href="index.html">MAHESH</a>
+      <div class="nav-times" aria-label="Current local times">
+        <span class="nav-time">UK <strong data-time-zone="Europe/London">--:--</strong></span>
+        <span class="nav-time" aria-label="India time">IN <strong data-time-zone="Asia/Kolkata">--:--</strong></span>
+      </div>
     </div>
+    <div class="nav-backdrop" aria-hidden="true"></div>
+    <aside class="nav-drawer" id="site-navigation" aria-hidden="true">
+      <div class="drawer-head">
+        <a class="drawer-brand" href="index.html">MAHESH</a>
+        <button class="menu-close" type="button"><span class="sr-only">Close navigation</span></button>
+      </div>
+      <p class="drawer-intro">Experienced Data Engineer building reliable, enterprise-scale data platforms and analytics systems.</p>
+      <div class="drawer-links">
+        <a class="active" href="index.html"><span class="drawer-index">01</span>Home</a>
+        <a href="index.html#about"><span class="drawer-index">02</span>About</a>
+        <a href="index.html#experience"><span class="drawer-index">03</span>Experience</a>
+        <a href="index.html#projects"><span class="drawer-index">04</span>Projects</a>
+        <a href="data-engineering.html"><span class="drawer-index">05</span>Blog</a>
+        <a href="index.html#architecture-gallery"><span class="drawer-index">06</span>Architecture Gallery</a>
+        <a href="index.html#certifications"><span class="drawer-index">07</span>Certifications</a>
+        <a href="index.html#contact"><span class="drawer-index">08</span>Contact</a>
+      </div>
+      <p class="drawer-contact">London, UK<br><a href="mailto:connect@themahesh.org">connect@themahesh.org</a></p>
+    </aside>
   </nav>
   <div class="page">
-    <header class="hero">
+    <header class="hero" id="about">
       <div>
         <div class="eyebrow">Data Engineer</div>
         <h1><a href="https://themahesh.org">MAHESH</a></h1>
@@ -467,7 +530,35 @@
       </div>
     </header>
 
-    <section class="card">
+    <section class="portfolio-section" id="experience">
+      <div class="section-kicker">Experience</div>
+      <h2 class="section-heading">Enterprise data delivery from source to insight</h2>
+      <p class="section-lead">More than five years working across data engineering, analytics, business intelligence, platform delivery, and application support.</p>
+      <div class="experience-list">
+        <div class="experience-row">
+          <div class="row-label">Platform Engineering</div>
+          <div class="row-content"><h3>Reliable data foundations</h3><p>Designing warehouse, lakehouse, ETL/ELT, and orchestration patterns that teams can operate and extend.</p></div>
+        </div>
+        <div class="experience-row">
+          <div class="row-label">Analytics Delivery</div>
+          <div class="row-content"><h3>Business-ready models and reporting</h3><p>Translating requirements into dimensional models, governed metrics, Power BI experiences, and decision-ready datasets.</p></div>
+        </div>
+        <div class="experience-row">
+          <div class="row-label">Ways of Working</div>
+          <div class="row-content"><h3>Pragmatic cross-functional delivery</h3><p>Working through Agile delivery, JAD, process management, support, and change management to move complex work into production.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="certifications">
+      <div class="section-kicker">Certifications</div>
+      <h2 class="section-heading">Credentials and continuous learning</h2>
+      <p class="section-lead">Professional development focused on the platforms and practices behind modern enterprise data engineering.</p>
+      <div class="credential-list">
+        <div class="credential-row"><span class="row-label">Microsoft Data</span><span class="row-content"><h3>Azure and Fabric ecosystem</h3><p>Cloud data integration, lakehouse architecture, analytics engineering, governance, and Power BI.</p></span></div>
+        <div class="credential-row"><span class="row-label">Lakehouse Engineering</span><span class="row-content"><h3>Databricks, Spark, and Delta patterns</h3><p>Distributed processing, performance tuning, declarative pipelines, and production lakehouse design.</p></span></div>
+        <div class="credential-row"><span class="row-label">Core Practice</span><span class="row-content"><h3>Modeling, SQL, quality, and delivery</h3><p>Kimball methodology, dimensional design, testing, observability, and reliable operational delivery.</p></span></div>
+      </div>
       <h2 class="section-title">Core Skills</h2>
       <div class="skills">
         <span class="pill">Data Modeling</span>
@@ -493,39 +584,39 @@
       </div>
     </section>
 
-    <section class="card map">
-      <h2 class="section-title">My Assets</h2>
+    <section class="card map" id="projects">
+      <h2 class="section-title">Selected Projects</h2>
       <div class="map-wrap" id="map">
         <svg class="map-svg" id="map-links" aria-hidden="true"></svg>
-        <div class="map-hub" id="map-hub">THE PROJECTS</div>
+        <div class="map-hub" id="map-hub">DATA PLATFORMS</div>
 
-        <a class="map-node" data-type="project" data-id="p1" href="https://example.com/project-1" target="_blank" rel="noreferrer" style="left: 16%; top: 26%;">
-          Real-time Billing
-          <span>Kafka · Flink</span>
+        <a class="map-node" data-type="project" data-id="p1" href="data-engineering.html?post=data-engineering/blogs/fabric-medallion.md" style="left: 16%; top: 26%;">
+          Fabric Lakehouse
+          <span>Fabric · OneLake</span>
         </a>
-        <a class="map-node" data-type="project" data-id="p2" href="https://example.com/project-2" target="_blank" rel="noreferrer" style="left: 40%; top: 12%;">
-          Semantic Layer
-          <span>dbt · Metrics</span>
+        <a class="map-node" data-type="project" data-id="p2" href="data-engineering.html?post=data-engineering/blogs/dbt-medallion-architecture.md" style="left: 40%; top: 12%;">
+          dbt Layers
+          <span>dbt · Modeling</span>
         </a>
-        <a class="map-node" data-type="project" data-id="p3" href="https://example.com/project-3" target="_blank" rel="noreferrer" style="left: 70%; top: 20%;">
-          ML Feature Store
-          <span>Feast · BigQuery</span>
+        <a class="map-node" data-type="project" data-id="p3" href="data-engineering.html?post=data-engineering/blogs/data-quality-monitoring.md" style="left: 70%; top: 20%;">
+          Quality Monitoring
+          <span>Tests · Alerts</span>
         </a>
-        <a class="map-node" data-type="project" data-id="p4" href="https://example.com/project-4" target="_blank" rel="noreferrer" style="left: 82%; top: 48%;">
-          FinOps Pipeline
-          <span>Snowflake · Python</span>
+        <a class="map-node" data-type="project" data-id="p4" href="data-engineering.html?post=data-engineering/blogs/spark-performance-tuning.md" style="left: 82%; top: 48%;">
+          Spark Tuning
+          <span>Spark · Databricks</span>
         </a>
-        <a class="map-node" data-type="project" data-id="p5" href="https://example.com/project-5" target="_blank" rel="noreferrer" style="left: 70%; top: 76%;">
-          Analytics Hub
-          <span>Superset · UX</span>
+        <a class="map-node" data-type="project" data-id="p5" href="data-engineering.html?post=data-engineering/blogs/scd-type2.md" style="left: 70%; top: 76%;">
+          Historical Models
+          <span>SQL · Kimball</span>
         </a>
-        <a class="map-node" data-type="project" data-id="p6" href="https://example.com/project-6" target="_blank" rel="noreferrer" style="left: 44%; top: 84%;">
-          Data Governance
-          <span>Lineage · Policy</span>
+        <a class="map-node" data-type="project" data-id="p6" href="data-engineering.html?post=data-engineering/blogs/adf-incremental-load.md" style="left: 44%; top: 84%;">
+          Incremental Loads
+          <span>ADF · Watermarks</span>
         </a>
-        <a class="map-node" data-type="project" data-id="p7" href="https://example.com/project-7" target="_blank" rel="noreferrer" style="left: 18%; top: 70%;">
-          SLA Monitor
-          <span>Alerts · SLIs</span>
+        <a class="map-node" data-type="project" data-id="p7" href="data-engineering.html?post=data-engineering/blogs/lakehouse-fabric-vs-databricks.md" style="left: 18%; top: 70%;">
+          Platform Selection
+          <span>Fabric · Databricks</span>
         </a>
       </div>
     </section>
@@ -534,6 +625,24 @@
       <h3 id="info-title">Other information...</h3>
       <p id="info-body">Hover on a project or a link below to preview details. Click a project to open its page.</p>
       <div class="info-tags" id="info-tags"></div>
+    </section>
+
+    <section class="portfolio-section" id="architecture-gallery">
+      <div class="section-kicker">Architecture Gallery</div>
+      <h2 class="section-heading">Patterns for scalable data systems</h2>
+      <p class="section-lead">Selected architecture notes covering ingestion, transformation, quality, lakehouse design, and analytical modeling.</p>
+      <div class="architecture-list">
+        <a class="architecture-row" href="data-engineering.html?post=data-engineering/blogs/dbt-medallion-architecture.md"><span class="row-label">Layered Modeling</span><span class="row-content"><h3>dbt Medallion Architecture</h3><p>Raw, cleaned, and business-ready layers with explicit ownership and testing.</p></span></a>
+        <a class="architecture-row" href="data-engineering.html?post=data-engineering/blogs/lakehouse-fabric-vs-databricks.md"><span class="row-label">Platform Strategy</span><span class="row-content"><h3>Fabric vs Databricks</h3><p>A decision framework for matching platform capabilities to teams and workloads.</p></span></a>
+        <a class="architecture-row" href="data-engineering.html?post=data-engineering/blogs/data-quality-monitoring.md"><span class="row-label">Reliability</span><span class="row-content"><h3>Data Quality at Scale</h3><p>Layered validation, statistical monitoring, and business-rule testing.</p></span></a>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="contact">
+      <div class="section-kicker">Contact</div>
+      <h2 class="section-heading">Build dependable data products</h2>
+      <p class="section-lead">Based in London and open to permanent data engineering opportunities, technical collaboration, and platform-focused conversations.</p>
+      <div class="contact-line"><span>Start a conversation</span><a href="mailto:connect@themahesh.org">connect@themahesh.org</a></div>
     </section>
 
   </div>
@@ -546,72 +655,41 @@
     const infoDetails = {
       projects: {
         p1: {
-          title: "Real-time Billing",
-          body: "Built a low-latency billing stream with end-to-end guarantees and drift detection.",
-          tags: ["Kafka", "Flink", "SLOs"]
+          title: "Fabric Lakehouse",
+          body: "A medallion-style architecture using Fabric, OneLake and governed analytical layers.",
+          tags: ["Fabric", "OneLake", "Lakehouse"]
         },
         p2: {
-          title: "Semantic Layer",
-          body: "Unified business metrics with versioned definitions and self-serve exploration.",
-          tags: ["dbt", "Metrics", "Governance"]
+          title: "dbt Transformation Layers",
+          body: "A maintainable transformation structure separating raw, cleaned and business-ready models.",
+          tags: ["dbt", "Modeling", "Tests"]
         },
         p3: {
-          title: "ML Feature Store",
-          body: "Productionized feature pipelines with offline/online parity and monitoring.",
-          tags: ["Feast", "BigQuery", "ML"]
+          title: "Data Quality Monitoring",
+          body: "Automated checks and monitoring patterns designed to catch problems before consumers do.",
+          tags: ["Quality", "Monitoring", "Reliability"]
         },
         p4: {
-          title: "FinOps Pipeline",
-          body: "Automated cost attribution and anomaly alerts across multiple clouds.",
-          tags: ["Snowflake", "Python", "FinOps"]
+          title: "Spark Performance",
+          body: "A practical tuning workflow for skew, shuffles, joins and small-file bottlenecks.",
+          tags: ["Spark", "Databricks", "Performance"]
         },
         p5: {
-          title: "Analytics Hub",
-          body: "Executive dashboards with narrative insights and drill-downs.",
-          tags: ["Superset", "UX", "KPIs"]
+          title: "Historical Data Models",
+          body: "Dimensional modeling patterns that preserve business history for point-in-time analysis.",
+          tags: ["SQL", "Kimball", "SCD2"]
         },
         p6: {
-          title: "Data Governance",
-          body: "Policy-driven lineage, classification, and retention.",
-          tags: ["Lineage", "Security", "Compliance"]
+          title: "Incremental Data Loads",
+          body: "Watermark-driven ingestion patterns with rerun safety and late-arriving data handling.",
+          tags: ["ADF", "ETL", "Watermarks"]
         },
         p7: {
-          title: "SLA Monitor",
-          body: "Operational monitoring for pipelines with incident workflows.",
-          tags: ["Alerting", "SLIs", "Ops"]
+          title: "Platform Selection",
+          body: "A practical comparison of Fabric and Databricks based on workload, team and governance needs.",
+          tags: ["Fabric", "Databricks", "Strategy"]
         }
-      },
-      pages: {
-        home: {
-          title: "Home",
-          body: "Overview of my work, projects and experience.",
-          tags: ["Portfolio", "Profile"]
-        },
-      
-        "data-engineering": {
-          title: "Data Engineering",
-          body: "Azure, Fabric, Databricks, SQL, ETL/ELT and real-world project implementations.",
-          tags: ["Azure", "Fabric", "SQL"]
-        },
-      
-        personal: {
-          title: "Personal",
-          body: "Career journey, productivity, lessons learned and personal experiences.",
-          tags: ["Career", "Growth"]
-        },
-      
-        books: {
-          title: "Books I Read",
-          body: "Books, reviews, summaries and key takeaways.",
-          tags: ["Books", "Learning"]
-        },
-      
-        downloads: {
-          title: "Free Resources",
-          body: "Templates, interview guides, learning paths and useful references.",
-          tags: ["Resources", "Downloads"]
-        }
-  }
+      }
     };
 
     const clearTags = () => {
@@ -631,9 +709,8 @@
 
     const attachHandlers = () => {
       document.querySelectorAll("[data-type]").forEach((el) => {
-        const type = el.getAttribute("data-type");
         const id = el.getAttribute("data-id");
-        const entry = type === "project" ? infoDetails.projects[id] : infoDetails.pages[id];
+        const entry = infoDetails.projects[id];
         if (!entry) return;
 
         el.addEventListener("mouseenter", () => renderInfo(entry));
