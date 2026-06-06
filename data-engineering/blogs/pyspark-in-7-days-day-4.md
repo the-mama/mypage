@@ -120,7 +120,3 @@ TrySpark
 **Focus:**
 
 Performance-aware Data Engineering
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-4.html).*

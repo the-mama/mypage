@@ -39,7 +39,3 @@ source: "https://idataengineer.blogspot.com/2025/03/exploring-largest-uk-employe
 #### What’s Next?
 
 #### Would you add more interactive elements to this visualization? Share your thoughts and suggestions!
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2025/03/exploring-largest-uk-employers-power-bi.html).*

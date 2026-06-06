@@ -172,7 +172,3 @@ YAML mastery isn't glamorous, but it's the difference between a senior data engi
 Start small: convert one manual process to YAML this week. By next month, you'll wonder how you ever worked without it.
 
 **What's your biggest YAML challenge? Share in the comments below!**
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/yaml-mastery-for-data-engineers.html).*

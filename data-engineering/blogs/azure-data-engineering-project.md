@@ -73,7 +73,3 @@ supporting fast reporting in **Power BI**.
 Overall, the solution was **scalable, metadata-driven, secure,
 and well governed**, with a clear separation between ingestion,
 transformation, and consumption layers.
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/02/azure-data-engineering-project.html).*

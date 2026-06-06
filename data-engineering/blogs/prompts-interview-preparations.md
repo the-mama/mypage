@@ -225,7 +225,3 @@ Answer:
 When user input is unclear, we ask small questions and guide them to correct workflow.
 
 ________________________________________
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/03/prompts-interview-preparations.html).*

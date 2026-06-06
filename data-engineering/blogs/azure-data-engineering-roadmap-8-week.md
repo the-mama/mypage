@@ -119,7 +119,3 @@ source: "https://idataengineer.blogspot.com/2026/06/azure-data-engineering-roadm
 
 Every week should produce runnable code, pipelines, notebooks,
  or deployment artifacts that can be demonstrated during interviews.
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/06/azure-data-engineering-roadmap-8-week.html).*

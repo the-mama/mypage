@@ -285,7 +285,3 @@ These are written to be understandable to beginners but still demonstrate senior
 - You explain trade-offs clearly to stakeholders
 
 [Back to top](#top)
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/terraform-for-senior-data-engineers.html).*

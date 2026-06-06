@@ -93,7 +93,3 @@ Databricks is easy to start with, but production-grade pipelines require **archi
  not just Spark code.
 
 CTA
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/6-common-databricks-mistakes-data.html).*

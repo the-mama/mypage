@@ -174,7 +174,3 @@ Advanced Data Engineer
 **Outcome:**
 
 You now understand PySpark the way Spark executes it, not just how to write it.
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-bonus.html).*

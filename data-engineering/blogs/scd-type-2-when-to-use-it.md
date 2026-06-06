@@ -159,7 +159,3 @@ The fact table stores the surrogate key (Customer_Key), so it automatically join
 - Implementation requires surrogate keys, effective dates, and current flags
 - Performance optimization is critical: use hashing, partitioning, and proper indexing
 - Always use surrogate keys in fact tables, never natural keys
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/scd-type-2-when-to-use-it.html).*

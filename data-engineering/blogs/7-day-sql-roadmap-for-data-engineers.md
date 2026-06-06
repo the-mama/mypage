@@ -206,7 +206,3 @@ source: "https://idataengineer.blogspot.com/2026/06/7-day-sql-roadmap-for-data-e
 - Implement SCD Type 1 and Type 2 using SQL Server.
 - Build a small ETL framework using metadata tables.
 - Be able to explain every query during interviews.
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/06/7-day-sql-roadmap-for-data-engineers.html).*

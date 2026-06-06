@@ -137,7 +137,3 @@ WHERE d.customer_id IS NULL;
 
 “I compare today’s staging snapshot to the current dimension row by business key, expire the current row only if tracked attributes changed,
  and then insert a new version as the current record with updated valid_from/valid_to dates.”
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/the-most-asked-sql-interview-question.html).*

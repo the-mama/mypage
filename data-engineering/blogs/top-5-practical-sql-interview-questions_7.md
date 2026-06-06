@@ -141,7 +141,3 @@ WHEN NOT MATCHED BY TARGET THEN
 - De-duplication using **CTE + ROW_NUMBER**
 - Benchmark filtering using **subqueries**
 - Incremental loading using **MERGE** (upsert)
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/top-5-practical-sql-interview-questions_7.html).*

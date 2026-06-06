@@ -124,7 +124,3 @@ This cheat sheet covers 90% of PySpark used in real production pipelines and int
 **Level:**
 
 Data Engineer (Intermediate → Advanced)
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-bonus2.html).*

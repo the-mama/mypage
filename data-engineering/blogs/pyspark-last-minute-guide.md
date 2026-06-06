@@ -308,7 +308,3 @@ df = df.withColumn("squared", square(df["value"]))
 ---
 
 **If this helped you:** Bookmark this post for quick revision before interviews.
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/pyspark-last-minute-guide.html).*

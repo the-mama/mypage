@@ -774,7 +774,3 @@ resources:
 | --- | --- | --- |
 | Use Variables | Environment-specific configs without duplication | ${var.catalog_name} |
 | Use Anchors | Reusable cluster configs reduce errors | &standard_ |
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/master-databricks-asset-bundles-through.html).*

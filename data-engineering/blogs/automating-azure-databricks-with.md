@@ -192,7 +192,3 @@ If you are serious about Databricks in enterprise projects, SDK-based automation
 ---
 
 **Happy Automating 🚀**
-
----
-
-*Originally published on [Data Engineer](https://idataengineer.blogspot.com/2026/01/automating-azure-databricks-with.html).*
