@@ -5,7 +5,6 @@ category: "Analytics"
 author: "The Mahesh"
 excerpt: "Understanding employment distribution among top companies can provide valuable insights into industry dominance and workforce trends. In this blog, I analyze the largest employers in the UK…"
 tags: "Power BI, Data, PowerBI"
-source: "https://idataengineer.blogspot.com/2025/03/exploring-largest-uk-employers-power-bi.html"
 ---
 
 # Exploring the Largest UK Employers: A Power BI Visualization

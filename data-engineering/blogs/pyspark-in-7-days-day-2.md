@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 2 Welcome to Day 2 of the PySpark in 7 Days series . Today is one of the most important days because DataFrames are the core abstraction used in real-world…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-2.html"
 ---
 
 # PySpark in 7 Days (Day 2)

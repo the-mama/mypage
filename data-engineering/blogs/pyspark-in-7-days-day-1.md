@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 1 Welcome to Day 1 of the “Learn PySpark in 7 Days” series . This series is designed for data engineers, analysts, and SQL professionals who want to learn…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-1.html"
 ---
 
 # PySpark in 7 Days (Day 1)

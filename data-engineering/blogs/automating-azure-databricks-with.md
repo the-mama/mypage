@@ -5,7 +5,6 @@ category: "Databricks"
 author: "The Mahesh"
 excerpt: "When working with Azure Databricks, creating clusters, jobs, repos, and secrets manually from the UI does not scale. For real-world data engineering projects, automation is essential. In…"
 tags: "Databricks, Azure, Automation, VS Code"
-source: "https://idataengineer.blogspot.com/2026/01/automating-azure-databricks-with.html"
 ---
 
 # Automating Azure Databricks with Databricks SDK (Python) – Step by Step Guide

@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 6 Welcome to Day 6 . Today we move from writing correct PySpark code to writing efficient and scalable PySpark code . This is where many data engineers fail…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-6.html"
 ---
 
 # PySpark in 7 Days (Day 6)

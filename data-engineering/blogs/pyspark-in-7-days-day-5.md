@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 5 Welcome to Day 5 . Today we cover aggregations and window functions — two topics that appear frequently in interviews and are used extensively in real-world…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-5.html"
 ---
 
 # PySpark in 7 Days (Day 5)

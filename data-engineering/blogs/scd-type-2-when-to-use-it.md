@@ -5,7 +5,6 @@ category: "Data Engineering"
 author: "The Mahesh"
 excerpt: "& Interview Questions SCD Type 2: When to Use It & Interview Questions What is SCD Type 2? SCD Type 2 (Slowly Changing Dimension Type 2) is a data warehouse technique that tracks the…"
 tags: "SCD Type 2"
-source: "https://idataengineer.blogspot.com/2026/01/scd-type-2-when-to-use-it.html"
 ---
 
 # SCD Type 2: When to Use It

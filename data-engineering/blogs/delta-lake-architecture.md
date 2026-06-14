@@ -5,7 +5,6 @@ category: "Architecture"
 author: "The Mahesh"
 excerpt: ": What It Is and Why It Matters Delta Lake Architecture: What It Is and Why It Matters TL;DR What it is: Delta Lake is an open-source storage layer that brings database-like reliability…"
 tags: "Delta Lake, System Design"
-source: "https://idataengineer.blogspot.com/2026/01/delta-lake-architecture.html"
 ---
 
 # Delta Lake Architecture

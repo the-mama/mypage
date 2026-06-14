@@ -5,7 +5,6 @@ category: "SQL"
 author: "The Mahesh"
 excerpt: "7-Day SQL Roadmap for Data Engineers Dataset Used: dbo.orders dbo.returns dbo.people Day 1 - SQL Fundamentals Topics SELECT WHERE ORDER BY DISTINCT TOP GROUP BY HAVING Aggregate Functions…"
 tags: "SQL, Roadmap"
-source: "https://idataengineer.blogspot.com/2026/06/7-day-sql-roadmap-for-data-engineers.html"
 ---
 
 # SQL Server Roadmap for Data Engineers (7 Days)

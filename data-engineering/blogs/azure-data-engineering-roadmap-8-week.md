@@ -5,7 +5,6 @@ category: "Azure Data Engineering"
 author: "The Mahesh"
 excerpt: "Azure Data Engineering Roadmap (8 Weeks) Week 1: Azure + ADF Foundations Goal: Confidently explain Azure resource hierarchy and build your first ADF pipelines. Day 1: Azure subscription,…"
 tags: "Azure, Roadmap"
-source: "https://idataengineer.blogspot.com/2026/06/azure-data-engineering-roadmap-8-week.html"
 ---
 
 # Azure Data Engineering Roadmap

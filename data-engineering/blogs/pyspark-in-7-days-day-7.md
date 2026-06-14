@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 7 Welcome to Day 7 — the most important day of this series. Today, we bring everything together and build a real-world, end-to-end PySpark ETL pipeline using…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-7.html"
 ---
 
 # PySpark in 7 Days (Day 7)

@@ -5,7 +5,6 @@ category: "DevOps for Data"
 author: "The Mahesh"
 excerpt: "YAML Mastery for Senior Data Engineers: The Configuration Language You Can't Ignore Published on January 21, 2026 | 8 min read As a senior data engineer, you've mastered SQL, conquered…"
 tags: "YAML"
-source: "https://idataengineer.blogspot.com/2026/01/yaml-mastery-for-data-engineers.html"
 ---
 
 # YAML Mastery for Data Engineers: The Configuration Language You Can't Ignore

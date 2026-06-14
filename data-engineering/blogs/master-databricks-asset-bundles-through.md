@@ -5,7 +5,6 @@ category: "Databricks"
 author: "The Mahesh"
 excerpt: "15 min read | 100% Practical Guide Forget theory. Forget abstract examples. This is a hands-on, build-as-you-learn guide to mastering YAML through the lens of Databricks Asset Bundles…"
 tags: "Databricks"
-source: "https://idataengineer.blogspot.com/2026/01/master-databricks-asset-bundles-through.html"
 ---
 
 # Master Databricks Asset Bundles Through Hands-On Practice

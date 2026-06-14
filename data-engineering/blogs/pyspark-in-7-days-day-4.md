@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 4 Welcome to Day 4 . Today we cover one of the most tested topics in interviews and one of the most performance-critical operations in Spark: Joins . Day 4…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-4.html"
 ---
 
 # PySpark in 7 Days (Day 4)

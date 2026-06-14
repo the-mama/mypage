@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "Learn PySpark in 7 Days – Day 3 Welcome to Day 3 . Today is a very important day for SQL professionals , because we focus on Spark SQL and how PySpark allows you to run SQL directly on…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-day-3.html"
 ---
 
 # PySpark in 7 Days (Day 3)

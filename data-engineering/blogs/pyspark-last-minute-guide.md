@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "If you are preparing for Data Engineering interviews , Spark projects , or need a quick PySpark revision , this post consolidates the most important PySpark concepts in one place. Best for:…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-last-minute-guide.html"
 ---
 
 # PySpark Important Last-Minute Notes

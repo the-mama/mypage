@@ -5,7 +5,6 @@ category: "Architecture"
 author: "The Mahesh"
 excerpt: "System Design Interviews: End-to-End Data Pipeline Architecture System Design Interviews: End-to-End Data Pipeline Architecture TL;DR What they're testing: Your ability to design scalable,…"
 tags: "System Design"
-source: "https://idataengineer.blogspot.com/2026/01/system-design-architecture.html"
 ---
 
 # System Design Architecture

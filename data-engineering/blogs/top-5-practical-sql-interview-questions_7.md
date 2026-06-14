@@ -5,7 +5,6 @@ category: "SQL"
 author: "The Mahesh"
 excerpt: "These five SQL problems are frequently asked in data engineering and analytics interviews because they test real work: ranking, deduplication, incremental logic, and business-style…"
 tags: "SQL, Interview"
-source: "https://idataengineer.blogspot.com/2026/01/top-5-practical-sql-interview-questions_7.html"
 ---
 
 # Top 5 Practical SQL Interview Questions

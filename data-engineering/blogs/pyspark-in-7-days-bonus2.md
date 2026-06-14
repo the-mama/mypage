@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "PySpark Cheat Sheet – Data Engineer Edition TL;DR • SparkSession is the entry point • Transformations are lazy, actions trigger execution • Avoid shuffles, prefer broadcast joins • Use…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-bonus2.html"
 ---
 
 # PySpark in 7 Days (bonus2)

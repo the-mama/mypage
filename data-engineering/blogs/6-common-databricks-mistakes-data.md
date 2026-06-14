@@ -5,7 +5,6 @@ category: "Databricks"
 author: "The Mahesh"
 excerpt: "While working with Databricks, I noticed something important: most production issues don’t come from Spark itself — they come from how Databricks is used . The good news is that many of…"
 tags: "Databricks"
-source: "https://idataengineer.blogspot.com/2026/01/6-common-databricks-mistakes-data.html"
 ---
 
 # 6 Common Databricks Mistakes Data Engineers Make (with Practical Fixes)

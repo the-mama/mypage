@@ -5,7 +5,6 @@ category: "DevOps for Data"
 author: "The Mahesh"
 excerpt: "Senior Data Engineer • DevOps for Data Terraform for Data Engineers: Why You Must Know It (and How You’ll Use It) Terraform is not “infra-only.” For modern data platforms (Azure /…"
 tags: "Terraform"
-source: "https://idataengineer.blogspot.com/2026/01/terraform-for-senior-data-engineers.html"
 ---
 
 # Terraform for Senior Data Engineers

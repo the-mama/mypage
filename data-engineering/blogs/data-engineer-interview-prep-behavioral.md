@@ -5,7 +5,6 @@ category: "Interview Preparation"
 author: "The Mahesh"
 excerpt: "Senior Data Engineer Interview Prep: Behavioral STAR Questions When interviewing for senior and associate-level data engineering roles, behavioral questions are just as critical as…"
 tags: "Interview"
-source: "https://idataengineer.blogspot.com/2026/01/data-engineer-interview-prep-behavioral.html"
 ---
 
 # Data Engineer Interview Prep: Behavioral STAR Questions

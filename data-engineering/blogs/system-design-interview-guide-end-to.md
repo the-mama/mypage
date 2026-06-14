@@ -5,7 +5,6 @@ category: "Interview Preparation"
 author: "The Mahesh"
 excerpt: "System Design Interview Guide: End-to-End Data Pipeline Architecture System design interviews for senior and associate-level data engineering roles focus on your ability to architect…"
 tags: "System Design, Interview"
-source: "https://idataengineer.blogspot.com/2026/01/system-design-interview-guide-end-to.html"
 ---
 
 # System Design Interview Guide: End-to-End Data Pipeline Architecture

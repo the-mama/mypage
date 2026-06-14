@@ -5,7 +5,6 @@ category: "Azure Data Engineering"
 author: "The Mahesh"
 excerpt: "In my recent project, I built an end-to-end Azure data platform that ingested semi-structured JSON data from multiple APIs and delivered analytics-ready datasets modelled in a star schema…"
 tags: "Azure, Data Platform"
-source: "https://idataengineer.blogspot.com/2026/02/azure-data-engineering-project.html"
 ---
 
 # Azure Data Engineering Project - End-to-End Azure Data Platform

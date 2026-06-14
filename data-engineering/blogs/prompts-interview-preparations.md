@@ -5,7 +5,6 @@ category: "Interview Preparation"
 author: "The Mahesh"
 excerpt: "Prompt 1: Classifier Prompt (Decision Step) ------------------------------------------- You are a resume analyzer. INPUT: [RESUME_TEXT] TASK: Decide if the candidate is a Fresher or…"
 tags: "Interview"
-source: "https://idataengineer.blogspot.com/2026/03/prompts-interview-preparations.html"
 ---
 
 # Prompts & Interview Preparations

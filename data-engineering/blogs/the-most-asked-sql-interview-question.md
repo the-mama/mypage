@@ -5,7 +5,6 @@ category: "SQL"
 author: "The Mahesh"
 excerpt: "If you interview for Data Engineer roles, one question appears again and again: “How do you implement SCD Type 2 in SQL?” Interviewers ask this because it reveals whether you can design…"
 tags: "SQL, SCD Type 2, Interview"
-source: "https://idataengineer.blogspot.com/2026/01/the-most-asked-sql-interview-question.html"
 ---
 
 # The Most Asked SQL Interview Question on SCD Type 2

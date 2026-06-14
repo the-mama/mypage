@@ -5,7 +5,6 @@ category: "PySpark"
 author: "The Mahesh"
 excerpt: "PySpark – Advanced Topics (Data Engineer Perspective) This is the final and advanced-level post of the Learn PySpark series. You have already covered Beginner → Intermediate . This post…"
 tags: "PySpark"
-source: "https://idataengineer.blogspot.com/2026/01/pyspark-in-7-days-bonus.html"
 ---
 
 # PySpark in 7 Days (bonus1)
