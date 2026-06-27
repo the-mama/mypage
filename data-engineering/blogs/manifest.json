@@ -1,6 +1,7 @@
 {
   "category": "Data Engineering",
   "posts": [
+    "data-engineering/blogs/azure-expression-language-top-20-daily-expressions.md",
     "data-engineering/blogs/7-day-sql-roadmap-for-data-engineers.md",
     "data-engineering/blogs/azure-data-engineering-roadmap-8-week.md",
     "data-engineering/blogs/prompts-interview-preparations.md",
