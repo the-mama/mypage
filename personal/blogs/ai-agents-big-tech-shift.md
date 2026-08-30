@@ -1,58 +1,18 @@
----
-title: "From Chatbots to Agents: The Big Tech Shift That Matters"
-date: "2026-06-06"
-category: "Technology"
-author: "The Mahesh"
-excerpt: "The important AI change is not another smarter chat window; it is software moving from answering questions to completing bounded work."
-tags: "AI, Agents, Big Tech"
----
+మా కుమారుడికి ఈ పేరు ఎందుకు పెట్టామంటే…
 
-# From Chatbots to Agents: The Big Tech Shift That Matters
+మారుపాకుల మా కుటుంబ వంశపేరు. భార్గవరామ భృగు–భార్గవ ఋషి పరంపరకు, కౌండిన్య మా ప్రాచీన ఋషి–గోత్ర పరంపరకు గుర్తు.
+కులం, వృత్తి అనే గుర్తింపులకంటే మన ప్రాచీన హిందూ ఋషి పరంపర, జ్ఞానం, సంస్కృతి, విలువలను నీ ద్వారా ముందుకు తీసుకెళ్లాలనే సంకల్పంతో ఈ పేరు పెట్టాము.
 
-The most meaningful recent change in big technology is the move from **AI that answers** to **AI that acts**.
+పరశురామునిలా ధర్మం కోసం నిలబడే ధైర్యం, అన్యాయాన్ని ఎదిరించే శౌర్యం, త్యాగం మరియు కర్తవ్యనిష్ఠ నీ జీవితంలో ఉండాలి. శక్తిని ధర్మానికి, జ్ఞానాన్ని లోకహితానికి వినియోగిస్తూ జీవించాలి.
 
-Chatbots made generative AI visible. Agents are making it operational. Instead of producing a paragraph and stopping, an agent can inspect context, use tools, execute several steps, check a result, and return an outcome. That changes AI from a destination into a layer inside everyday software.
+నీవు సనాతన ధర్మాన్ని గౌరవించి, పరిరక్షించే వారసుడిగా, యోగం, సాధన, భక్తి, జ్ఞానం, శౌర్యంతో విలువలతో కూడిన జీవితం గడపాలి. తప్పును తప్పుగా, ఒప్పును ఒప్పుగా చెప్పే ధైర్యం, కావాలనుకున్నది సాధించే సంకల్పం, వద్దనుకున్నది మొహమాటం లేకుండా “వద్దు” అని చెప్పే నిబ్బరం నీలో ఉండాలి.
 
-## Why this is a real platform shift
+నీ అభివృద్ధితో పాటు వంశాభివృద్ధి, సమాజాభివృద్ధి, దేశాభివృద్ధికి నీ వంతు సేవ చేయాలి. జీవితంలో ఎప్పుడూ “దేశమే ముఖ్యం, తర్వాతే వ్యక్తిగతం” (Nation First – Self Last) అనే సూత్రాన్ని గుర్తుంచుకుని జీవించాలి.
 
-The large technology companies are converging on the same direction:
+ఎల్లమ్మ తల్లి ఆశీస్సులతో నీ పేరు, నీ వ్యక్తిత్వం, నీ వారసత్వం కలకాలం బాసిల్లాలని కోరుకుంటూ…
 
-- Models are being connected to browsers, codebases, enterprise data, and business applications.
-- Reasoning is being combined with tool use and longer-running tasks.
-- Cloud platforms are adding controls for identity, observability, evaluation, and governance.
-- Applications are being redesigned around intent rather than a sequence of menus.
+జయహో మా భారతి 🚩🇮🇳
 
-The breakthrough is therefore not one model score. It is the integration of models, tools, data, permissions, and feedback loops.
-
-## What changes for data teams
-
-Agents increase the value of reliable data engineering. An agent with incomplete definitions, stale data, or excessive permissions can make mistakes faster than a person.
-
-Data teams now need to treat the following as product requirements:
-
-1. **Semantic clarity:** business terms must have stable definitions.
-2. **Data freshness:** agents need to know when information was last updated.
-3. **Lineage:** every important answer should be traceable to its source.
-4. **Access control:** tool use must follow the user’s permissions.
-5. **Evaluation:** teams must test outcomes, not only fluent responses.
-
-## What remains difficult
-
-Agents are still probabilistic systems. Long tasks can drift. Tool calls can fail. A plausible explanation can hide an incorrect action. For high-impact work, human approval and deterministic controls remain necessary.
-
-The practical architecture is not “AI replaces the workflow.” It is:
-
-> AI plans and assists; governed systems execute; people approve consequential decisions.
-
-## My conclusion
-
-The recent AI revolution is becoming less visible and more useful. The winning products will not constantly announce that they contain AI. They will remove repetitive coordination while preserving evidence, permissions, and accountability.
-
-For engineers, the opportunity is larger than prompt writing. It is building the trustworthy data and platform foundations that make intelligent software dependable.
-
-## Further reading
-
-- [OpenAI product announcements](https://openai.com/news/)
-- [Microsoft AI announcements](https://blogs.microsoft.com/ai/)
-- [Google technology and AI updates](https://blog.google/technology/ai/)
-- [Anthropic news](https://www.anthropic.com/news)
+ఇట్లు,
+మీ అమ్మ & నాన్న
+త్రివేణి & మహేష్ ❤️
