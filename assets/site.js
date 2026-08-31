@@ -119,13 +119,18 @@
 
     try {
       const manifest = await loadManifest(manifestPath);
-      const posts = await Promise.all(
+      const posts = (await Promise.all(
         manifest.posts.map(async (path) => {
-          const markdown = await readMarkdown(path);
-          const parsed = parseFrontmatter(markdown);
-          return { path, content: parsed.content, ...parsed.data };
+          try {
+            const markdown = await readMarkdown(path);
+            const parsed = parseFrontmatter(markdown);
+            return { path, content: parsed.content, ...parsed.data };
+          } catch (error) {
+            console.warn(`Skipping blog post ${path}:`, error);
+            return null;
+          }
         })
-      );
+      )).filter(Boolean);
 
       let currentPage = 1;
       posts.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
