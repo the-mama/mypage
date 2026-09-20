@@ -329,7 +329,8 @@ body.nav-open .nav-drawer {
 .home-hero {
   min-height: calc(100vh - 78px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  grid-template-rows: auto auto;
   align-content: center;
   gap: clamp(42px, 8vw, 110px);
   padding: 40px 0;
@@ -340,6 +341,7 @@ body.nav-open .nav-drawer {
 
 .home-copy {
   max-width: 700px;
+  align-self: end;
 }
 
 .home-copy .wordmark {
@@ -397,6 +399,37 @@ body.nav-open .nav-drawer {
   pointer-events: none;
 }
 
+.temple-feature {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin: 0;
+  transform: rotate(1.5deg);
+}
+
+.temple-feature img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  display: block;
+  border: 10px solid var(--surface);
+  box-shadow: 0 24px 44px rgba(29, 43, 43, 0.2);
+  object-fit: cover;
+  object-position: 58% center;
+}
+
+.temple-feature figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  text-align: right;
+}
+
+.temple-feature figcaption a {
+  color: var(--muted);
+}
+
 .home-actions {
   display: flex;
   justify-content: flex-start;
@@ -406,6 +439,8 @@ body.nav-open .nav-drawer {
 }
 
 .home-aside {
+  grid-column: 1;
+  grid-row: 2;
   align-self: end;
   padding: 28px 0 8px 28px;
   border-left: 1px solid var(--line);
@@ -844,11 +879,22 @@ body.nav-open .nav-drawer {
   .home-hero {
     min-height: auto;
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: 34px;
     padding: 24px 0 12px;
   }
 
+  .temple-feature {
+    grid-column: 1;
+    grid-row: auto;
+    width: min(100%, 420px);
+    justify-self: center;
+    transform: rotate(0.8deg);
+  }
+
   .home-aside {
+    grid-column: 1;
+    grid-row: auto;
     padding: 24px 0 0;
     border-top: 1px solid var(--line);
     border-left: 0;
