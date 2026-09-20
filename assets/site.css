@@ -2,15 +2,15 @@
 @import url("https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic");
 
 :root {
-  --bg: #f7f9fc;
-  --surface: #ffffff;
-  --ink: #18212b;
-  --muted: #657180;
-  --line: #dce3eb;
-  --accent: #0078d4;
-  --accent-soft: #eaf4fc;
-  --brand-red: #d62828;
-  --shadow: rgba(24, 33, 43, 0.12);
+  --bg: #f5f1e8;
+  --surface: #fffdf8;
+  --ink: #1d2b2b;
+  --muted: #68716d;
+  --line: #ddd8cc;
+  --accent: #c65b45;
+  --accent-soft: #f4e4dc;
+  --brand-red: #b64036;
+  --shadow: rgba(29, 43, 43, 0.12);
   --sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --brand: "TransRobotics Italic", "Inter", sans-serif;
 }
@@ -329,14 +329,17 @@ body.nav-open .nav-drawer {
 .home-hero {
   min-height: calc(100vh - 78px);
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
   align-content: center;
-  gap: 34px;
+  gap: clamp(42px, 8vw, 110px);
+  padding: 40px 0;
+  background:
+    linear-gradient(115deg, rgba(255, 253, 248, 0.8), rgba(244, 228, 220, 0.5)),
+    repeating-linear-gradient(0deg, transparent 0, transparent 35px, rgba(29, 43, 43, 0.035) 36px);
 }
 
 .home-copy {
-  max-width: 820px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 700px;
 }
 
 .home-copy .wordmark {
@@ -345,7 +348,7 @@ body.nav-open .nav-drawer {
 }
 
 .home-kicker {
-  margin: 22px 0 10px;
+  margin: 28px 0 12px;
   color: var(--accent);
   font-size: 0.78rem;
   font-weight: 800;
@@ -354,15 +357,15 @@ body.nav-open .nav-drawer {
 }
 
 .home-copy h1 {
-  max-width: 820px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 0;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.08;
 }
 
 .home-copy p {
-  max-width: 720px;
-  margin: 18px auto 0;
+  max-width: 620px;
+  margin: 22px 0 0;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.14rem);
   line-height: 1.75;
@@ -396,22 +399,70 @@ body.nav-open .nav-drawer {
 
 .home-actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 30px;
 }
 
-.data-poem {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0;
-  border: 0;
+.home-aside {
+  align-self: end;
+  padding: 28px 0 8px 28px;
+  border-left: 1px solid var(--line);
+}
+
+.home-aside-label {
+  margin: 0 0 18px;
   color: var(--ink);
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.topic-list {
+  display: grid;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topic-list li {
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.topic-list li::before {
+  display: inline-block;
+  width: 20px;
+  color: var(--accent);
+  content: "—";
+}
+
+.home-aside blockquote {
+  margin: 42px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.home-aside cite {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.72rem;
   font-style: normal;
-  font-weight: 600;
-  line-height: 1.7;
-  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .home-actions a {
@@ -792,11 +843,15 @@ body.nav-open .nav-drawer {
 
   .home-hero {
     min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 24px 0 12px;
   }
 
-  .hero-visual {
-    aspect-ratio: 4 / 3;
-    min-height: 0;
+  .home-aside {
+    padding: 24px 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
   }
 
   .hero-visual img {
