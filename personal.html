@@ -3,66 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mahesh's Telugu and English writing on meditation, reading, politics, technology, and AI." />
-  <title>Personal Blog | Mahesh</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <meta http-equiv="refresh" content="0; url=index.html" />
+  <meta name="description" content="Mahesh's personal journal." />
+  <title>Mahesh | Personal Journal</title>
+  <script>window.location.replace(`index.html${window.location.search}${window.location.hash}`);</script>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-  <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
-    <span class="ellipsis-icon" aria-hidden="true"></span>
-    <span class="sr-only">Open navigation</span>
-  </button>
-  <div class="nav-backdrop" aria-hidden="true"></div>
-  <aside class="nav-drawer" id="site-navigation" aria-hidden="true">
-    <div class="drawer-head">
-      <a class="wordmark drawer-brand" href="index.html"><span class="wordmark-ma">MA</span>HESH</a>
-      <button class="menu-close" type="button"><span class="sr-only">Close navigation</span></button>
-    </div>
-    <p class="drawer-intro">Personal writing on the ideas, stories, and questions that shape everyday life.</p>
-    <nav class="drawer-links" aria-label="Site navigation">
-      <a href="index.html"><span class="drawer-index">01</span>Home</a>
-      <a class="active" href="personal.html"><span class="drawer-index">02</span>Personal Blog</a>
-    </nav>
-    <blockquote class="drawer-quote">“Arise, awake, and stop not till the goal is reached.”<cite>Swami Vivekananda</cite></blockquote>
-  </aside>
-
   <main class="page">
-    <header class="page-header">
-      <a class="wordmark" href="index.html" aria-label="Mahesh, home"><span class="wordmark-ma">MA</span>HESH</a>
-      <h1>Personal Blog</h1>
-      <p>Telugu and English reflections on books, movies, meditation, public life, technology, and the changes shaping how we think and work.</p>
-    </header>
-
-    <div class="post-search">
-      <label class="sr-only" for="personal-search">Search personal posts</label>
-      <input id="personal-search" type="search" placeholder="Search Telugu and English posts…" autocomplete="off" data-blog-search="personalBlogGrid" />
-    </div>
-
-    <section class="post-section" data-blog-manifest="personal/blogs/manifest.json" data-blog-target="personalBlogGrid">
-      <div class="post-list" id="personalBlogGrid"></div>
-    </section>
+    <p>Redirecting to the personal journal.</p>
+    <a href="index.html">Open the journal</a>
   </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div>
-        <strong>Notes worth keeping.</strong>
-        <p>Occasional writing on books, movies, meditation, public life, technology, and life.</p>
-      </div>
-      <form class="subscribe-form" action="https://formspree.io/f/maqznlbb" method="POST">
-        <label class="sr-only" for="personal-email">Email address</label>
-        <input id="personal-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
-        <button type="submit">Subscribe</button>
-      </form>
-      <a class="github-link" href="https://github.com/the-mama" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
-  </footer>
-
-  <div class="blog-modal" id="blogModal">
-    <article class="blog-content" id="blogContent"></article>
-  </div>
-
-  <script src="assets/site.js"></script>
 </body>
 </html>

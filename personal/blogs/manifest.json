@@ -1,5 +1,12 @@
 {
   "category": "Personal",
+  "popular": [
+    "personal/blogs/books-i-have-read.md",
+    "personal/blogs/meditation-problem-solving.md",
+    "personal/blogs/movies-i-have-watched.md",
+    "personal/blogs/telugu-politics-beyond-headlines.md",
+    "personal/blogs/bhargavarama.md"
+  ],
   "posts": [
     "personal/blogs/movies-i-have-watched.md",
     "personal/blogs/books-i-have-read.md",

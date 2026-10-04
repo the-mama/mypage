@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mahesh's personal website and writing on books, movies, meditation, public life, technology, and AI." />
-  <title>Mahesh | Personal Notes</title>
+  <meta name="description" content="Personal notes and stories on books, movies, meditation, public life, and everyday questions." />
+  <title>Mahesh | Personal Journal</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
-<body class="home-page">
+<body class="journal-page">
   <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
     <span class="ellipsis-icon" aria-hidden="true"></span>
     <span class="sr-only">Open navigation</span>
@@ -20,53 +21,77 @@
     </div>
     <p class="drawer-intro">Personal writing on the ideas, stories, and questions that shape everyday life.</p>
     <nav class="drawer-links" aria-label="Site navigation">
-      <a class="active" href="index.html"><span class="drawer-index">01</span>Home</a>
-      <a href="personal.html"><span class="drawer-index">02</span>Personal Blog</a>
+      <a class="active" href="#top"><span class="drawer-index">01</span>Journal</a>
+      <a href="#blog-feed"><span class="drawer-index">02</span>All Posts</a>
     </nav>
     <blockquote class="drawer-quote">“Arise, awake, and stop not till the goal is reached.”<cite>Swami Vivekananda</cite></blockquote>
   </aside>
 
-  <main class="page">
-    <section class="home-hero">
-      <div class="home-copy">
-        <a class="wordmark" href="index.html" aria-label="Mahesh, home"><span class="wordmark-ma">MA</span>HESH</a>
-        <p class="home-kicker">Notes from a curious life · London</p>
-        <h1>A personal corner for things worth noticing.</h1>
-        <p>Thoughts on books, movies, meditation, public life, technology, AI, and the small discoveries that make ordinary days more thoughtful.</p>
-        <div class="home-actions">
-          <a href="personal.html">Read the personal blog</a>
-        </div>
-      </div>
-      <figure class="temple-feature">
-        <img src="assets/images/temple-architecture.jpg" alt="Colorful South Indian temple tower against a glowing evening sky" />
-        <figcaption>Temple architecture · <a href="https://unsplash.com/photos/temple-architecture-in-india-4d00b7f74220" target="_blank" rel="noopener">Image via Unsplash</a></figcaption>
-      </figure>
-      <aside class="home-aside" aria-label="Topics on the blog">
-        <p class="home-aside-label">A living collection</p>
-        <ul class="topic-list">
-          <li>Books that stay with me</li>
-          <li>Stories from cinema and life</li>
-          <li>Questions worth sitting with</li>
-        </ul>
-        <blockquote>“The unexamined life is not worth living.”<cite>Socrates</cite></blockquote>
-      </aside>
-    </section>
-  </main>
+  <main class="journal-shell" id="top">
+    <header class="journal-cover">
+      <img class="journal-cover-image" src="assets/images/CoverPhoto.jpeg" alt="London Eye, River Thames, and Westminster illuminated at night" />
+      <div class="cover-shade"></div>
+      <a class="wordmark cover-wordmark" href="index.html" aria-label="Mahesh's journal"><span class="wordmark-ma">MA</span>HESH</a>
+    </header>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div>
-        <strong>Notes worth keeping.</strong>
-        <p>Occasional writing on books, movies, meditation, public life, technology, and life.</p>
+    <section class="journal-identity" aria-label="About this journal">
+      <img class="profile-avatar" src="assets/images/images.jpeg" alt="Mahesh" />
+      <div class="identity-copy">
+        <h1>Mahesh's Notes</h1>
       </div>
-      <form class="subscribe-form" action="https://formspree.io/f/maqznlbb" method="POST">
-        <label class="sr-only" for="home-email">Email address</label>
-        <input id="home-email" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
-        <button type="submit">Subscribe</button>
-      </form>
-      <a class="github-link" href="https://github.com/the-mama" target="_blank" rel="noopener">GitHub ↗</a>
+    </section>
+
+    <div class="quote-strip" role="note" aria-label="Arise, awake, and stop not till the goal is reached. Swami Vivekananda">
+      <div class="quote-track" aria-hidden="true">
+        <span class="quote-message">“Arise, awake, and stop not till the goal is reached.” <cite>Swami Vivekananda</cite></span>
+        <span class="quote-message">“Arise, awake, and stop not till the goal is reached.” <cite>Swami Vivekananda</cite></span>
+      </div>
     </div>
-  </footer>
+
+    <div class="journal-layout">
+      <section class="journal-main" aria-label="Personal blog posts">
+        <div class="journal-toolbar">
+          <div>
+            <h2 id="feedHeading">Recent posts</h2>
+          </div>
+          <div class="post-search">
+            <label class="sr-only" for="personal-search">Search personal posts</label>
+            <input id="personal-search" type="search" placeholder="Search posts" autocomplete="off" data-blog-search="personalBlogGrid" />
+          </div>
+        </div>
+
+        <section class="post-section" id="blog-feed" data-blog-manifest="personal/blogs/manifest.json" data-blog-target="personalBlogGrid">
+          <div class="post-list" id="personalBlogGrid" aria-live="polite"></div>
+        </section>
+        <article class="blog-article" id="blogArticle" hidden></article>
+      </section>
+
+      <aside class="journal-sidebar" aria-label="Journal tools">
+        <section class="sidebar-widget calendar-widget" aria-labelledby="calendarHeading">
+          <div class="live-clock" aria-label="Current local time">
+            <span class="live-clock-label">Local time</span>
+            <time id="liveClock" class="live-clock-value">--:--:--:---</time>
+          </div>
+          <div class="widget-heading">
+            <h2 id="calendarHeading">Calendar</h2>
+            <div class="calendar-controls">
+              <button type="button" id="calendarPrev" aria-label="Previous month">‹</button>
+              <button type="button" id="calendarNext" aria-label="Next month">›</button>
+            </div>
+          </div>
+          <p class="calendar-month" id="calendarMonth"></p>
+          <div class="calendar-grid" id="calendarGrid" aria-label="Posts by date"></div>
+          <button class="calendar-clear" id="calendarClear" type="button" hidden>Show all dates</button>
+        </section>
+
+        <section class="sidebar-widget popular-widget" aria-labelledby="popularHeading">
+          <p class="home-aside-label">Worth a look</p>
+          <h2 id="popularHeading">Popular Posts</h2>
+          <ol class="popular-list" id="popularPosts"></ol>
+        </section>
+      </aside>
+    </div>
+  </main>
 
   <script src="assets/site.js"></script>
 </body>
