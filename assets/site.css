@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap");
 @import url("https://db.onlinewebfonts.com/c/2424d4ac78261b7997f56453cc4f7ddd?family=TransRobotics+Italic");
 
 :root {
-  --bg: #f5f1e8;
-  --surface: #fffdf8;
+  --bg: #fbfaf6;
+  --surface: #ffffff;
   --ink: #1d2b2b;
   --muted: #68716d;
   --line: #ddd8cc;
@@ -11,9 +12,9 @@
   --accent-soft: #f4e4dc;
   --brand-red: #b64036;
   --shadow: rgba(29, 43, 43, 0.12);
-  --journal-calendar: #e7eee9;
-  --journal-post: #f0e8e4;
-  --journal-post-hover: #e9ddd7;
+  --journal-calendar: #f1f4ef;
+  --journal-post: #fffefa;
+  --journal-post-hover: #f6f1e8;
   --sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --brand: "TransRobotics Italic", "Inter", sans-serif;
 }
@@ -321,7 +322,7 @@ body.nav-open .nav-drawer {
 }
 
 .journal-page {
-  background: #f7f6ef;
+  background: var(--bg);
 }
 
 .journal-shell {
@@ -359,15 +360,15 @@ body.nav-open .nav-drawer {
 
 .cover-wordmark {
   position: absolute;
-  top: 28px;
-  left: 32px;
-  color: #fffdf8;
+  right: 28px;
+  bottom: 24px;
+  color: #ffffff;
   font-size: clamp(2rem, 4vw, 3rem);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .cover-wordmark .wordmark-ma {
-  color: #ffd59a;
+  color: #c62828;
 }
 
 .journal-identity {
@@ -400,9 +401,9 @@ body.nav-open .nav-drawer {
 
 .identity-copy h1 {
   margin: 0;
-  font-family: var(--brand);
-  font-size: clamp(1.85rem, 3.8vw, 2.7rem);
-  font-weight: 400;
+  font-family: "Caveat", cursive;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 600;
   line-height: 1.1;
 }
 
@@ -420,10 +421,10 @@ body.nav-open .nav-drawer {
   margin: 0 2px 22px;
   padding: 6px 0;
   overflow: hidden;
-  border: 1px solid #c9c19f;
+  border: 1px solid #e5e1d9;
   border-radius: 5px;
   color: #3c4238;
-  background: #fff0a8;
+  background: #ffffff;
 }
 
 .quote-track {
@@ -437,15 +438,16 @@ body.nav-open .nav-drawer {
   align-items: center;
   gap: 8px;
   padding: 0 16px;
-  font-family: var(--brand);
-  font-size: 0.94rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 
 .quote-message cite {
   color: #686957;
-  font-family: var(--brand);
-  font-size: 0.76rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
   font-style: normal;
   font-weight: 700;
   text-transform: uppercase;
@@ -502,12 +504,6 @@ body.nav-open .nav-drawer {
 .popular-widget .home-aside-label {
   margin: 0 0 6px;
   color: var(--accent);
-}
-
-.journal-toolbar h2 {
-  font-family: var(--brand);
-  font-size: 1.45rem;
-  font-weight: 400;
 }
 
 .journal-toolbar h2,
@@ -1378,8 +1374,8 @@ body.nav-open .nav-drawer {
   }
 
   .cover-wordmark {
-    top: 19px;
-    left: 20px;
+    right: 18px;
+    bottom: 16px;
   }
 
   .journal-identity {
@@ -1425,7 +1421,6 @@ body.nav-open .nav-drawer {
   }
 
   .journal-sidebar {
-    order: -1;
     position: static;
     grid-auto-flow: row;
     grid-auto-columns: auto;
