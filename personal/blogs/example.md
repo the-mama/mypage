@@ -1,5 +1,5 @@
 ---
-title: My New Blog
+title: How to post blog via .md file
 date: 2026-08-31
 category: Personal
 tags: Life, Learning
